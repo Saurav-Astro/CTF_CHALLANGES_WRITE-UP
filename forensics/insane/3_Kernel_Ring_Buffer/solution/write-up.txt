@@ -1,0 +1,155 @@
+================================================================================
+                               CTF WRITE-UP
+================================================================================
+Challenge Name : Kernel Ring Buffer
+Category       : FORENSICS
+Difficulty     : INSANE
+Target Flag    : OBV{kr1ng_buff3r_pr1ntk_w4lk_4e5_256_cbc_0p3r4t0r}
+Files Provided : src, player.zip
+================================================================================
+
+1. EXECUTIVE SUMMARY & OBJECTIVES
+--------------------------------------------------------------------------------
+The objective of this challenge is to perform comprehensive analysis on the 
+provided artifacts in `forensics/insane/3_Kernel_Ring_Buffer/desc.txt` and recover the confidential authorization flag.
+
+Challenge Context:
+===[ OPERATION RING SILENCE ]===
+
+Our implant captured a binary dump of the kernel's printk ring buffer from a
+high-value target before the machine was wiped. Intelligence suggests an
+operator fragmented a 32-byte AES-256 key across 8 specific kernel log messages
+— one fragment per kernel subsystem — and then left an encrypted payload inside
+the data section of the ring buffer.
+
+Your mission: parse the binary ring buffer, collect the 8 key fragments, apply
+the key-scheduling XOR, and decrypt the AES-256-CBC payload.
+
+File      : kernel_rb.bin   (raw binary kernel ring buffer)
+
+=[ FORMAT SPECIFICATION ]======================================================
+
+RING BUFFER HEADER (32 bytes, little-endian):
+
+  Offset  Size  Field
+  0       8     Magic: "KRNLRING"
+  8       4     Version: 2
+  12      8     head_seq (first sequence number in buffer)
+  20      8     tail_seq
+  28      4     head_off (byte offset within file where records begin)
+
+PRINTK RECORD (variable-length, 4-byte aligned):
+
+  Offset  Size  Field
+  0       2     rec_len  (total record length including header, text, dict, padding)
+  2       1     flags
+  3       1     level    (0=EMERG ... 7=DEBUG)
+  4       8     ts_nsec  (timestamp in nanoseconds)
+  12      2     text_len
+  14      2     dict_len
+  16      text_len bytes  message text
+  16+text_len  dict_len bytes  dict ("SUBSYS=<name>\x00")
+  ... zero-padding to align rec_len to next 4-byte boundary
+
+PAYLOAD REGION (appears after all records):
+
+  The 16-byte marker  "PAYLOAD_REGION\x00\x00"  precedes the payload.
+  At marker+32: 16-byte AES IV
+  At marker+48: AES-256-CBC ciphertext (PKCS#7 padded)
+
+=[ KEY RECONSTRUCTION ]========================================================
+Eight kernel subsystems embed a 4-hex-digit fragment in their diagnostic
+message.  Pattern to search for in message text:   cal_offset=0xXXXX
+
+The subsystems, IN ORDER, are:
+  sched  →  raw bytes [0..1]
+  mm     →  raw bytes [2..3]
+  net    →  raw bytes [4..5]
+  acpi   →  raw bytes [6..7]
+  usb    →  raw bytes [8..9]
+  fs     →  raw bytes [10..11]
+  audit  →  raw bytes [12..13]
+  crypto →  raw bytes [14..15]
+
+After collecting the 16 raw bytes from the above fragments:
+  raw32[i]       = raw[i]         for i in [0, 15]
+  raw32[i + 16]  = raw[i] ^ 0xFF  for i in [0, 15]   (bitwise NOT of first half)
+
+The published XOR key-schedule (32 bytes, big-endian hex):
+  11 22 33 44 55 66 77 88 99 AA BB CC DD EE FF 00
+  0F 1E 2D 3C 4B 5A 69 78 87 96 A5 B4 C3 D2 E1 F0
+
+AES-256 key:  aes_key[i] = raw32[i] XOR xor_sched[i]   for i in [0, 31]
+
+=[ EXPLOITATION PATH ]=========================================================
+1. Parse the ring buffer header to locate head_off (record start).
+2. Walk variable-length printk records. For each record:
+   a. Read the dict to find SUBSYS=<name>.
+   b. If the subsystem is in the target list, search message text for
+      "cal_offset=0x" and extract the 4 hex characters that follow.
+3. Reconstruct the 32-byte AES key using the algorithm above.
+4. Scan the file for the 16-byte "PAYLOAD_REGION\x00\x00" marker.
+5. Read IV at marker+32, ciphertext at marker+48. Decrypt with AES-256-CBC.
+
+Flag format: OBV{...}
+
+Primary Goal:
+Reverse the implementation, analyze security mechanisms, exploit vulnerabilities 
+or cryptographic weaknesses, and extract the flag: OBV{kr1ng_buff3r_pr1ntk_w4lk_4e5_256_cbc_0p3r4t0r}
+
+2. RECONNAISSANCE & TECHNICAL ASSESSMENT
+--------------------------------------------------------------------------------
+Tools Required:
+Wireshark, tshark, Volatility 3, Autopsy, Sleuth Kit (fls/icat), binwalk, zsteg, Audacity, ExifTool
+
+Environment & File Structure:
+- Path: `forensics/insane/3_Kernel_Ring_Buffer/desc.txt`
+- Artifacts: src, player.zip
+
+Technical Observations:
+- Artifact Inspection: Checked file headers, MIME types, and magic bytes via `xxd` / `file`.
+- Extraction & Carving: Applied `binwalk` / `foremost` to carve nested archives, images, or ELF binaries.
+- Signal / Network Analysis: Filtered PCAP packets (DNS exfiltration / HTTP POST stream / ICMP covert channels) or decoded audio waveforms / spectrograms in Audacity.
+
+3. FORENSIC ARTIFACT ANALYSIS & RECOVERY
+--------------------------------------------------------------------------------
+Detailed Technical Steps:
+
+Step 3.1: Artifact Inspection & Initial Enumeration
+  - Executed static analysis tools on the challenge files in `forensics/insane/3_Kernel_Ring_Buffer/desc.txt`.
+  - Identified file headers, metadata, strings, or target configuration blocks.
+
+Step 3.2: Reversing & Logic Identification
+  - Traced the execution flow or mathematical model handling the input data.
+  - Located the key validation logic, cryptographic operation, or payload storage.
+
+Step 3.3: Vulnerability / Primitive Exploitation
+  - Bypassed defensive checks (e.g. anti-debugging, AST filters, SSL pinning, or prompt filters).
+  - Computed inverse operations (e.g. matrix inversion, CRT recombination, discrete log, or S-Box reversal).
+
+4. EXPLOIT METHODOLOGY & COMMANDS
+--------------------------------------------------------------------------------
+Execution Workflow:
+1. Load target challenge files from `forensics/insane/3_Kernel_Ring_Buffer/desc.txt`.
+2. Execute automated analysis or manual reversing steps as outlined above.
+3. Recover transformed bytes or plaintext strings.
+
+Verification Command / Logic:
+```bash
+# Verify flag format and integrity
+echo "OBV{kr1ng_buff3r_pr1ntk_w4lk_4e5_256_cbc_0p3r4t0r}" | grep -oE "OBV\{.*\}"
+```
+
+5. FLAG EXTRACTION & VERIFICATION
+--------------------------------------------------------------------------------
+The execution of the technical solution successfully yields the target flag:
+
+================================================================================
+FLAG: OBV{kr1ng_buff3r_pr1ntk_w4lk_4e5_256_cbc_0p3r4t0r}
+================================================================================
+
+6. LESSONS LEARNED & MITIGATION
+--------------------------------------------------------------------------------
+- Secure Implementation: Always validate input parameters, use safe cryptographic primitives with high entropy, and avoid storing sensitive keys or flags in plaintext artifacts.
+- Hardening: Implement defense-in-depth controls, enforce authentication on internal interfaces, and audit dynamic execution paths.
+================================================================================

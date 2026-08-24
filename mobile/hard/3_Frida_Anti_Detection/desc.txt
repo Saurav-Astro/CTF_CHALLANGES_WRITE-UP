@@ -1,0 +1,10 @@
+===[ FRIDA ANTI DETECTION ]===
+Difficulty: HARD
+Category: Mobile
+Source: Real inDrive APK
+
+Bypass Frida port 27042 and ptrace anti-debugging check.
+
+File: app.apk
+
+Flag: OBV{...}

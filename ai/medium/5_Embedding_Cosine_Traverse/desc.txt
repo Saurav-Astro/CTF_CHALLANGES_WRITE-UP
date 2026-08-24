@@ -1,0 +1,10 @@
+===[ OPERATION MATRIX PROJECTION ]===
+
+An AI feature extractor maps text bytes to a vector space via a linear projection matrix `W` (4x4 identity) stored in `projection.npz`.
+You are given the projected output vector `v_out = [69, 77, 66, 69]` (ASCII values).
+
+Solve the inverse matrix equation `x = W_inv . v_out` to recover the 4 ASCII characters and construct the flag.
+
+File : projection.npz
+
+Flag format: OBV{...}

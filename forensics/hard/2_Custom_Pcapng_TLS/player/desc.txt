@@ -1,0 +1,8 @@
+TACTICAL SITUATION:
+Enemy command servers communicated over TLS 1.3 encrypted tunnels. Packet capture analysis indicates Decryption Secrets Blocks (DSB) were embedded inside custom PCAPNG options blocks.
+
+MISSION OBJECTIVES:
+- Extract PCAPNG Decryption Secrets Block (DSB) option metadata from `secure_traffic.pcapng`.
+- Unmask `0x66` XOR key log entries to recover the flag.
+
+FLAG FORMAT: OBV{...}

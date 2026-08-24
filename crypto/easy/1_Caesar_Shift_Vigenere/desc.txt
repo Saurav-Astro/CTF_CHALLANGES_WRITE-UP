@@ -1,0 +1,1 @@
+Custom non-linear polynomial shift substitution over GF(256).

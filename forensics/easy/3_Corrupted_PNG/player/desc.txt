@@ -1,0 +1,8 @@
+TACTICAL SITUATION:
+Enemy signal jammers corrupted intercepted recon image headers. The primary magic bytes and IHDR chunk checksums were zeroed out.
+
+MISSION OBJECTIVES:
+- Repair PNG magic header signature (`89 50 4E 47 0D 0A 1A 0A`).
+- Recalculate IHDR chunk CRC checksum to restore `corrupted.png` and read the flag.
+
+FLAG FORMAT: OBV{...}

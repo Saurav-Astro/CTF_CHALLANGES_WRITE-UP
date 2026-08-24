@@ -1,0 +1,8 @@
+TACTICAL SITUATION:
+Field technicians extracted a raw 16MB SPI flash dump (`flash_dump.bin`) directly from an intercept drone boot chip.
+
+MISSION OBJECTIVES:
+- Analyze `flash_dump.bin` layout using Binwalk, strings, or offset hex parsers.
+- Locate the U-Boot NVRAM partition offset (`UBOOT_NVRAM_KEY_SLOT`) and unmask XOR `0x99` payload bytes to recover the flag.
+
+FLAG FORMAT: OBV{...}

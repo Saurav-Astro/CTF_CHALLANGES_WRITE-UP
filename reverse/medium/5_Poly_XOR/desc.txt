@@ -1,0 +1,8 @@
+TACTICAL SITUATION:
+Enemy node validation calculates modular arithmetic functions over field GF(257) with dynamic index-salted XOR masks guarded by /proc/self/maps library monitoring.
+
+MISSION OBJECTIVES:
+- Calculate modular multiplicative inverse of 17 over GF(257).
+- Invert index-salted XOR transformations to solve the root key.
+
+FLAG FORMAT: OBV{...}

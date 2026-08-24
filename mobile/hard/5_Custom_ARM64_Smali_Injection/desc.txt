@@ -1,0 +1,10 @@
+===[ CUSTOM ARM64 SMALI INJECTION ]===
+Difficulty: HARD
+Category: Mobile
+Source: Real X (Twitter) APK
+
+Inject custom Smali code to bypass native ARM64 validation.
+
+File: app.apk
+
+Flag: OBV{...}

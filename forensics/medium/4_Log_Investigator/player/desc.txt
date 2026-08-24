@@ -1,0 +1,8 @@
+TACTICAL SITUATION:
+Enemy cyber actors launched automated SSH brute-force attacks against security jump-hosts before obtaining access.
+
+MISSION OBJECTIVES:
+- Analyze `/var/log/auth.log` in `auth.log`.
+- Filter out failed attempts, extract key fingerprint hashes from `Accepted publickey` entries, and decode base64 chunks to recover the flag.
+
+FLAG FORMAT: OBV{...}

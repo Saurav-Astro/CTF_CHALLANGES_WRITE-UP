@@ -1,0 +1,8 @@
+TACTICAL SITUATION:
+Enemy core systems encrypt input tokens using index-dependent circular bit shifts and fixed XOR keys guarded by ptrace anti-tracing.
+
+MISSION OBJECTIVES:
+- Calculate index shift amounts `(i % 5) + 1`.
+- Reverse bit rotations to recover the root flag.
+
+FLAG FORMAT: OBV{...}

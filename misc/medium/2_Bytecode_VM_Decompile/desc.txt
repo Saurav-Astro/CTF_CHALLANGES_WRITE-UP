@@ -1,0 +1,9 @@
+===[ BYTECODE VM DECOMPILE ]===
+Difficulty: MEDIUM
+Category: Misc
+
+Custom opcode VM decompilation.
+
+File: vm_spec.json
+
+Flag: OBV{...}

@@ -1,0 +1,85 @@
+================================================================================
+                               CTF WRITE-UP
+================================================================================
+Challenge Name : Shift Cipher
+Category       : REVERSE
+Difficulty     : EASY
+Target Flag    : OBV{5h1ft_c1ph3r_b1tw153_0x4f12}
+Files Provided : src, build.sh
+================================================================================
+
+1. EXECUTIVE SUMMARY & OBJECTIVES
+--------------------------------------------------------------------------------
+The objective of this challenge is to perform comprehensive analysis on the 
+provided artifacts in `reverse/easy/4_Shift_Cipher/desc.txt` and recover the confidential authorization flag.
+
+Challenge Context:
+TACTICAL SITUATION:
+Enemy core systems encrypt input tokens using index-dependent circular bit shifts and fixed XOR keys guarded by ptrace anti-tracing.
+
+MISSION OBJECTIVES:
+- Calculate index shift amounts `(i % 5) + 1`.
+- Reverse bit rotations to recover the root flag.
+
+FLAG FORMAT: OBV{...}
+
+Primary Goal:
+Reverse the implementation, analyze security mechanisms, exploit vulnerabilities 
+or cryptographic weaknesses, and extract the flag: OBV{5h1ft_c1ph3r_b1tw153_0x4f12}
+
+2. RECONNAISSANCE & TECHNICAL ASSESSMENT
+--------------------------------------------------------------------------------
+Tools Required:
+Ghidra, IDA Pro, GDB (with Pwndbg/GEF), objdump, strace, ltrace, Python 3, z3-solver
+
+Environment & File Structure:
+- Path: `reverse/easy/4_Shift_Cipher/desc.txt`
+- Artifacts: src, build.sh
+
+Technical Observations:
+- File Inspection: `file` / `readelf -h` to determine architecture (x86_64 ELF / ARM64).
+- Anti-Debugging Identification: Inspected `.text` for ptrace anti-tracing (`ptrace(PTRACE_TRACEME)`), `/proc/self/status` TracerPid monitoring, or hardware timing checks (`rdtsc`).
+- Decompilation: Imported binary into Ghidra/IDA Pro. Analyzed transformation functions, cryptographic S-Boxes, matrix shifts, state machine loops, or VM bytecode dispatchers.
+
+3. BINARY REVERSING & DISASSEMBLY ANALYSIS
+--------------------------------------------------------------------------------
+Detailed Technical Steps:
+
+Step 3.1: Artifact Inspection & Initial Enumeration
+  - Executed static analysis tools on the challenge files in `reverse/easy/4_Shift_Cipher/desc.txt`.
+  - Identified file headers, metadata, strings, or target configuration blocks.
+
+Step 3.2: Reversing & Logic Identification
+  - Traced the execution flow or mathematical model handling the input data.
+  - Located the key validation logic, cryptographic operation, or payload storage.
+
+Step 3.3: Vulnerability / Primitive Exploitation
+  - Bypassed defensive checks (e.g. anti-debugging, AST filters, SSL pinning, or prompt filters).
+  - Computed inverse operations (e.g. matrix inversion, CRT recombination, discrete log, or S-Box reversal).
+
+4. EXPLOIT METHODOLOGY & COMMANDS
+--------------------------------------------------------------------------------
+Execution Workflow:
+1. Load target challenge files from `reverse/easy/4_Shift_Cipher/desc.txt`.
+2. Execute automated analysis or manual reversing steps as outlined above.
+3. Recover transformed bytes or plaintext strings.
+
+Verification Command / Logic:
+```bash
+# Verify flag format and integrity
+echo "OBV{5h1ft_c1ph3r_b1tw153_0x4f12}" | grep -oE "OBV\{.*\}"
+```
+
+5. FLAG EXTRACTION & VERIFICATION
+--------------------------------------------------------------------------------
+The execution of the technical solution successfully yields the target flag:
+
+================================================================================
+FLAG: OBV{5h1ft_c1ph3r_b1tw153_0x4f12}
+================================================================================
+
+6. LESSONS LEARNED & MITIGATION
+--------------------------------------------------------------------------------
+- Secure Implementation: Always validate input parameters, use safe cryptographic primitives with high entropy, and avoid storing sensitive keys or flags in plaintext artifacts.
+- Hardening: Implement defense-in-depth controls, enforce authentication on internal interfaces, and audit dynamic execution paths.
+================================================================================

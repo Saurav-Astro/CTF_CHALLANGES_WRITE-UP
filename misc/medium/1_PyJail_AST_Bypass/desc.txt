@@ -1,0 +1,9 @@
+===[ PYJAIL AST BYPASS ]===
+Difficulty: MEDIUM
+Category: Misc
+
+PyJail AST node inspection bypass.
+
+File: ast_jail.py
+
+Flag: OBV{...}

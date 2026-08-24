@@ -1,0 +1,9 @@
+===[ PYJAIL BASIC BYPASS ]===
+Difficulty: EASY
+Category: Misc
+
+Bypass PyJail string filter to leak FLAG variable.
+
+File: jail.py
+
+Flag: OBV{...}

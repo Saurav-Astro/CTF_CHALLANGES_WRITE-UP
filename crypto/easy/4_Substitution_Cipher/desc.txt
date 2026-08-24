@@ -1,0 +1,1 @@
+Custom 256-element S-Box lookup table inversion.

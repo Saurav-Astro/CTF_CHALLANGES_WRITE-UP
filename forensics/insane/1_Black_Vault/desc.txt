@@ -1,0 +1,32 @@
+🎯 BLACK VAULT — CLASSIFIED OPERATION
+
+OPERATION: BLACK VAULT
+THREAT LEVEL: INSANE
+DOMAIN: LINUX MEMORY FORENSICS
+
+“They thought the evidence was gone. It wasn't.”
+
+A covert Black Vault telemetry process was terminated before extraction. The target system is offline, the process is dead, and the only remaining evidence is a captured memory dump.
+
+Intel reports that the target hid critical data across multiple memory regions before shutdown. The payload was fragmented, disguised, and protected with a lightweight transformation.
+
+Your mission is to enter the memory dump, identify the Black Vault traces, follow the forensic breadcrumbs, recover the hidden regions, and reconstruct the classified payload.
+
+OBJECTIVE
+
+Locate. Decode. Reassemble.
+
+Recover the four scattered fragments hidden inside memdump.raw and reconstruct the final Black Vault flag.
+
+INTEL
+File: memdump.raw
+Environment: Linux
+Category: Forensics
+Difficulty: Insane
+Known flag format: OBV{...}
+
+“The process is gone.
+The memory isn't.
+Find what they left behind.”
+
+Good hunting, operator.

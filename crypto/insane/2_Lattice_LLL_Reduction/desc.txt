@@ -1,0 +1,8 @@
+High-dimensional Closest Vector Problem (CVP) over a 16-dimensional non-orthonormal knapsack lattice space.
+
+MISSION OBJECTIVES:
+1. Load subset basis vector `a`, target sum `S`, and ciphertext `ct_hex` from `lattice_cvp_16d.json`.
+2. Build the (N+1) dimensional Kannan embedding lattice matrix.
+3. Perform LLL basis reduction to extract the binary indicator vector and recover the AES key.
+
+FLAG FORMAT: OBV{...}

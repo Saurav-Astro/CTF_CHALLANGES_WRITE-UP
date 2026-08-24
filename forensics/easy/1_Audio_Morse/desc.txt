@@ -1,0 +1,8 @@
+TACTICAL SITUATION:
+Field listening posts intercepted an RF transmission broadcast over low-frequency radio channels. Audio analysis indicates Morse code modulation.
+
+MISSION OBJECTIVES:
+- Analyze audio pulse timing in `signal.wav`.
+- Translate short (dot) and long (dash) tone sequences to reconstruct the authorization key.
+
+FLAG FORMAT: OBV{...}

@@ -1,0 +1,8 @@
+TACTICAL SITUATION:
+Enemy core systems operate a custom binary frame protocol parser (`[Magic:0x5056][Command:0x77][Length][Payload][Adler32]`). Input signals must pass multi-layer checksum and stateful payload transformation.
+
+MISSION OBJECTIVES:
+- Reverse the custom binary packet protocol header framing and command state machine.
+- Generate a valid binary packet containing the payload flag unlock string.
+
+FLAG FORMAT: OBV{...}

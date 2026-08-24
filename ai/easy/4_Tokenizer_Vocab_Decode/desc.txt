@@ -1,0 +1,9 @@
+===[ OPERATION VOCAB DECODE ]===
+
+An intercepted LLM communication stream logged an array of token IDs:
+`[1337, 404, 777, 888, 999]`
+
+You are provided with the custom BPE tokenizer vocabulary map (`vocab.json`). Reconstruct the original text from the token IDs to recover the flag.
+
+
+Flag format: OBV{...}

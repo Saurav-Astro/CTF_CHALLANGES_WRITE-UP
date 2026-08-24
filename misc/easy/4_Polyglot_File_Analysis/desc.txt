@@ -1,0 +1,9 @@
+===[ POLYGLOT FILE ANALYSIS ]===
+Difficulty: EASY
+Category: Misc
+
+GIF / Text polyglot file header inspection.
+
+File: sample.gif
+
+Flag: OBV{...}

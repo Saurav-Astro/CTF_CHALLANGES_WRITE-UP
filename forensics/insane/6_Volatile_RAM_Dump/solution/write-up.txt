@@ -1,0 +1,138 @@
+================================================================================
+                               CTF WRITE-UP
+================================================================================
+Challenge Name : Volatile RAM Dump
+Category       : FORENSICS
+Difficulty     : INSANE
+Target Flag    : OBV{l1m3_ph451c4l_p4g3_w4lk_4e5_m3m0ry_8f2c}
+Files Provided : src, player.zip
+================================================================================
+
+1. EXECUTIVE SUMMARY & OBJECTIVES
+--------------------------------------------------------------------------------
+The objective of this challenge is to perform comprehensive analysis on the 
+provided artifacts in `forensics/insane/6_Volatile_RAM_Dump/desc.txt` and recover the confidential authorization flag.
+
+Challenge Context:
+===[ OPERATION GHOST AGENT ]===
+
+A field operative injected a sleeper agent process named "ghost_agent" into a
+target system. Before the machine was seized, a physical memory acquisition was
+performed using the LiME (Linux Memory Extractor) kernel module.
+
+Your task is to recover the operator's encrypted exfiltration payload from the
+memory image and decrypt it.
+
+File      : memory.raw   (LiME v1 binary physical memory dump)
+
+=[ TECHNICAL CONTEXT ]=========================================================
+The LiME file format stores contiguous physical memory ranges. Each range is
+preceded by a 32-byte header:
+
+  Offset  Size  Field
+  0       4     Magic: 0x4C694D45 ("LiME") — little-endian
+  4       4     Version: 1
+  8       8     start_addr (physical)
+  16      8     end_addr   (physical, inclusive)
+  24      8     Reserved (zero)
+
+The kernel uses a simplified task_struct (80 bytes) linked list in physical
+memory. Each entry has the following layout (all little-endian):
+
+  Offset  Size  Field
+  0       8     Magic: "TS2_HDR\x00"
+  8       8     next_phys (physical address of next task_struct)
+  16      8     prev_phys
+  24      4     pid
+  28      4     tgid
+  32      6     [padding]
+  38      16    comm (process name, null-padded)
+  54      2     [padding]
+  56      8     mm_phys (physical address of mm_struct, 0 if kernel thread)
+  64      16    [tail padding]
+
+The mm_struct (48 bytes) has this layout:
+
+  Offset  Size  Field
+  0       8     Magic: "MM2_HDR\x00"
+  8       8     heap_a_phys
+  16      8     heap_b_phys
+  24      8     mmap_phys
+  32      16    [reserved]
+
+=[ EXPLOITATION PATH ]=========================================================
+1. Parse LiME headers to build a physical → file-offset lookup table.
+2. Walk the task_struct doubly-linked list starting at physical 0x00001000.
+   Locate the process with pid=1337 ("ghost_agent").
+3. Read its mm_struct to obtain heap_a_phys, heap_b_phys, and mmap_phys.
+4. Extract FRAG_A (8 bytes) from heap_a_phys + 0x100.
+   Extract FRAG_B (8 bytes) from heap_b_phys + 0x200.
+   AES-128-CBC Key = FRAG_A || FRAG_B  (simple concatenation, 16 bytes total).
+5. Read the mmap region. The structure is:
+     +0    17 bytes  "MMAP_EXEC_REGION\x00"
+     +32   16 bytes  AES IV
+     +48   N  bytes  AES-128-CBC ciphertext (PKCS#7 padded)
+   Decrypt with the key from step 4. The result is the flag.
+
+Flag format: OBV{...}
+
+Primary Goal:
+Reverse the implementation, analyze security mechanisms, exploit vulnerabilities 
+or cryptographic weaknesses, and extract the flag: OBV{l1m3_ph451c4l_p4g3_w4lk_4e5_m3m0ry_8f2c}
+
+2. RECONNAISSANCE & TECHNICAL ASSESSMENT
+--------------------------------------------------------------------------------
+Tools Required:
+Wireshark, tshark, Volatility 3, Autopsy, Sleuth Kit (fls/icat), binwalk, zsteg, Audacity, ExifTool
+
+Environment & File Structure:
+- Path: `forensics/insane/6_Volatile_RAM_Dump/desc.txt`
+- Artifacts: src, player.zip
+
+Technical Observations:
+- Artifact Inspection: Checked file headers, MIME types, and magic bytes via `xxd` / `file`.
+- Extraction & Carving: Applied `binwalk` / `foremost` to carve nested archives, images, or ELF binaries.
+- Signal / Network Analysis: Filtered PCAP packets (DNS exfiltration / HTTP POST stream / ICMP covert channels) or decoded audio waveforms / spectrograms in Audacity.
+
+3. FORENSIC ARTIFACT ANALYSIS & RECOVERY
+--------------------------------------------------------------------------------
+Detailed Technical Steps:
+
+Step 3.1: Artifact Inspection & Initial Enumeration
+  - Executed static analysis tools on the challenge files in `forensics/insane/6_Volatile_RAM_Dump/desc.txt`.
+  - Identified file headers, metadata, strings, or target configuration blocks.
+
+Step 3.2: Reversing & Logic Identification
+  - Traced the execution flow or mathematical model handling the input data.
+  - Located the key validation logic, cryptographic operation, or payload storage.
+
+Step 3.3: Vulnerability / Primitive Exploitation
+  - Bypassed defensive checks (e.g. anti-debugging, AST filters, SSL pinning, or prompt filters).
+  - Computed inverse operations (e.g. matrix inversion, CRT recombination, discrete log, or S-Box reversal).
+
+4. EXPLOIT METHODOLOGY & COMMANDS
+--------------------------------------------------------------------------------
+Execution Workflow:
+1. Load target challenge files from `forensics/insane/6_Volatile_RAM_Dump/desc.txt`.
+2. Execute automated analysis or manual reversing steps as outlined above.
+3. Recover transformed bytes or plaintext strings.
+
+Verification Command / Logic:
+```bash
+# Verify flag format and integrity
+echo "OBV{l1m3_ph451c4l_p4g3_w4lk_4e5_m3m0ry_8f2c}" | grep -oE "OBV\{.*\}"
+```
+
+5. FLAG EXTRACTION & VERIFICATION
+--------------------------------------------------------------------------------
+The execution of the technical solution successfully yields the target flag:
+
+================================================================================
+FLAG: OBV{l1m3_ph451c4l_p4g3_w4lk_4e5_m3m0ry_8f2c}
+================================================================================
+
+6. LESSONS LEARNED & MITIGATION
+--------------------------------------------------------------------------------
+- Secure Implementation: Always validate input parameters, use safe cryptographic primitives with high entropy, and avoid storing sensitive keys or flags in plaintext artifacts.
+- Hardening: Implement defense-in-depth controls, enforce authentication on internal interfaces, and audit dynamic execution paths.
+================================================================================

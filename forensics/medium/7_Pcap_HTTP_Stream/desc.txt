@@ -1,0 +1,8 @@
+TACTICAL SITUATION:
+Enemy workstations transmitted encrypted configuration logs over HTTP POST streams using compressed gzip bodies and single-byte XOR masking.
+
+MISSION OBJECTIVES:
+- Extract HTTP POST TCP payload stream from `traffic.pcap`.
+- Unmask `0x37` XOR encoding and decompress the Gzip stream to recover the root flag.
+
+FLAG FORMAT: OBV{...}

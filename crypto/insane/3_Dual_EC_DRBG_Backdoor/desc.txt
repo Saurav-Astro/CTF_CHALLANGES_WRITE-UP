@@ -1,0 +1,8 @@
+Dual EC DRBG pseudo-random generator with a hidden elliptic curve backdoor scalar $P = d \cdot Q$.
+
+MISSION OBJECTIVES:
+1. Load domain parameters, secret seed $s_1$, backdoor scalar $d$, and ciphertext from `dual_ec_anomalous.json`.
+2. Compute the state evolution equation $s_2 = s_1 \cdot d \pmod p$.
+3. Hash $s_2$ using SHA-256 to derive the 128-bit AES key and decrypt the payload.
+
+FLAG FORMAT: OBV{...}

@@ -1,0 +1,8 @@
+TACTICAL SITUATION:
+Enemy signal authenticators process input using a multi-pass cumulative XOR cascade with index-salted feedback protected by ptrace anti-tracing.
+
+MISSION OBJECTIVES:
+- Reverse the cumulative XOR state feedback loop.
+- Recover the authorization key.
+
+FLAG FORMAT: OBV{...}

@@ -1,0 +1,8 @@
+TACTICAL SITUATION:
+Enemy authentication module checks input vectors using 2x2 matrix transformation over modulo 256 arithmetic guarded by ptrace anti-tracing.
+
+MISSION OBJECTIVES:
+- Invert the 2x2 key matrix modulo 256.
+- Recover the authorization vector passcode.
+
+FLAG FORMAT: OBV{...}

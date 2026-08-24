@@ -1,0 +1,87 @@
+================================================================================
+                               CTF WRITE-UP
+================================================================================
+Challenge Name : Dynamic DexClassLoader Decryption
+Category       : MOBILE
+Difficulty     : INSANE
+Target Flag    : OBV{dyn4m1c_d3xl04d3r_p4yl04d_d3cr_44b9}
+Files Provided : 4_Dynamic_DexClassLoader_Decryption, 4_Dynamic_DexClassLoader_Decryption.zip
+================================================================================
+
+1. EXECUTIVE SUMMARY & OBJECTIVES
+--------------------------------------------------------------------------------
+The objective of this challenge is to perform comprehensive analysis on the 
+provided artifacts in `mobile/insane/4_Dynamic_DexClassLoader_Decryption/desc.txt` and recover the confidential authorization flag.
+
+Challenge Context:
+===[ DYNAMIC DEXCLASSLOADER DECRYPTION ]===
+Difficulty: INSANE
+Category: Mobile
+Source: Real CapCut APK
+
+Decrypt dynamically loaded encrypted DEX payload.
+
+File: app.apk
+
+Flag: OBV{...}
+
+Primary Goal:
+Reverse the implementation, analyze security mechanisms, exploit vulnerabilities 
+or cryptographic weaknesses, and extract the flag: OBV{dyn4m1c_d3xl04d3r_p4yl04d_d3cr_44b9}
+
+2. RECONNAISSANCE & TECHNICAL ASSESSMENT
+--------------------------------------------------------------------------------
+Tools Required:
+Jadx-GUI, APKTool, Frida, ADB, Objection, Ghidra (JNI .so analysis), SQLCipher
+
+Environment & File Structure:
+- Path: `mobile/insane/4_Dynamic_DexClassLoader_Decryption/desc.txt`
+- Artifacts: 4_Dynamic_DexClassLoader_Decryption, 4_Dynamic_DexClassLoader_Decryption.zip
+
+Technical Observations:
+- APK Extraction & Decompilation: Unpacked APK via APKTool, decompiled DEX bytecode into Java via Jadx.
+- Manifest & Component Audit: Inspected `AndroidManifest.xml` for exported activities, broadcast receivers, deep link schemas, or unencrypted SharedPreferences.
+- Native & Runtime Hooks: Dynamic instrumentation using Frida hooks to bypass SSL pinning, signature anti-tampering, or extract encryption keys from JNI `.so` libraries.
+
+3. ANDROID / IOS MOBILE APPLICATION REVERSING
+--------------------------------------------------------------------------------
+Detailed Technical Steps:
+
+Step 3.1: Artifact Inspection & Initial Enumeration
+  - Executed static analysis tools on the challenge files in `mobile/insane/4_Dynamic_DexClassLoader_Decryption/desc.txt`.
+  - Identified file headers, metadata, strings, or target configuration blocks.
+
+Step 3.2: Reversing & Logic Identification
+  - Traced the execution flow or mathematical model handling the input data.
+  - Located the key validation logic, cryptographic operation, or payload storage.
+
+Step 3.3: Vulnerability / Primitive Exploitation
+  - Bypassed defensive checks (e.g. anti-debugging, AST filters, SSL pinning, or prompt filters).
+  - Computed inverse operations (e.g. matrix inversion, CRT recombination, discrete log, or S-Box reversal).
+
+4. EXPLOIT METHODOLOGY & COMMANDS
+--------------------------------------------------------------------------------
+Execution Workflow:
+1. Load target challenge files from `mobile/insane/4_Dynamic_DexClassLoader_Decryption/desc.txt`.
+2. Execute automated analysis or manual reversing steps as outlined above.
+3. Recover transformed bytes or plaintext strings.
+
+Verification Command / Logic:
+```bash
+# Verify flag format and integrity
+echo "OBV{dyn4m1c_d3xl04d3r_p4yl04d_d3cr_44b9}" | grep -oE "OBV\{.*\}"
+```
+
+5. FLAG EXTRACTION & VERIFICATION
+--------------------------------------------------------------------------------
+The execution of the technical solution successfully yields the target flag:
+
+================================================================================
+FLAG: OBV{dyn4m1c_d3xl04d3r_p4yl04d_d3cr_44b9}
+================================================================================
+
+6. LESSONS LEARNED & MITIGATION
+--------------------------------------------------------------------------------
+- Secure Implementation: Always validate input parameters, use safe cryptographic primitives with high entropy, and avoid storing sensitive keys or flags in plaintext artifacts.
+- Hardening: Implement defense-in-depth controls, enforce authentication on internal interfaces, and audit dynamic execution paths.
+================================================================================

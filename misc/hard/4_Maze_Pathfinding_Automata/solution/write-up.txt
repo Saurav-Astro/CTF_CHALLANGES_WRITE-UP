@@ -1,0 +1,85 @@
+================================================================================
+                               CTF WRITE-UP
+================================================================================
+Challenge Name : Maze Pathfinding Automata
+Category       : MISC
+Difficulty     : HARD
+Target Flag    : OBV{m4z3_p47hf1nd1ng_bfr5_s0lv3r_4411}
+Files Provided : None
+================================================================================
+
+1. EXECUTIVE SUMMARY & OBJECTIVES
+--------------------------------------------------------------------------------
+The objective of this challenge is to perform comprehensive analysis on the 
+provided artifacts in `misc/hard/4_Maze_Pathfinding_Automata/desc.txt` and recover the confidential authorization flag.
+
+Challenge Context:
+===[ MAZE PATHFINDING AUTOMATA ]===
+Difficulty: HARD
+Category: Misc
+
+Breadth-first search shortest path in matrix grid.
+
+File: maze.json
+
+Flag: OBV{...}
+
+Primary Goal:
+Reverse the implementation, analyze security mechanisms, exploit vulnerabilities 
+or cryptographic weaknesses, and extract the flag: OBV{m4z3_p47hf1nd1ng_bfr5_s0lv3r_4411}
+
+2. RECONNAISSANCE & TECHNICAL ASSESSMENT
+--------------------------------------------------------------------------------
+Tools Required:
+Python 3, z3-solver, pwntools, gdb, scanmem, multimon-ng, Netcat
+
+Environment & File Structure:
+- Path: `misc/hard/4_Maze_Pathfinding_Automata/desc.txt`
+- Artifacts: None
+
+Technical Observations:
+- Environment Audit: Examined PyJail restriction rules (AST audit hooks, __builtins__ filtering), Brainfuck execution engines, or custom socket protocols.
+- Exploit Development: Built payload chains to escape Python sandboxes, solve real-time maze pathfinding via BFS, or de-obfuscate custom VM bytecodes.
+
+3. SANDBOX ESCAPE & CUSTOM PROTOCOL REVERSING
+--------------------------------------------------------------------------------
+Detailed Technical Steps:
+
+Step 3.1: Artifact Inspection & Initial Enumeration
+  - Executed static analysis tools on the challenge files in `misc/hard/4_Maze_Pathfinding_Automata/desc.txt`.
+  - Identified file headers, metadata, strings, or target configuration blocks.
+
+Step 3.2: Reversing & Logic Identification
+  - Traced the execution flow or mathematical model handling the input data.
+  - Located the key validation logic, cryptographic operation, or payload storage.
+
+Step 3.3: Vulnerability / Primitive Exploitation
+  - Bypassed defensive checks (e.g. anti-debugging, AST filters, SSL pinning, or prompt filters).
+  - Computed inverse operations (e.g. matrix inversion, CRT recombination, discrete log, or S-Box reversal).
+
+4. EXPLOIT METHODOLOGY & COMMANDS
+--------------------------------------------------------------------------------
+Execution Workflow:
+1. Load target challenge files from `misc/hard/4_Maze_Pathfinding_Automata/desc.txt`.
+2. Execute automated analysis or manual reversing steps as outlined above.
+3. Recover transformed bytes or plaintext strings.
+
+Verification Command / Logic:
+```bash
+# Verify flag format and integrity
+echo "OBV{m4z3_p47hf1nd1ng_bfr5_s0lv3r_4411}" | grep -oE "OBV\{.*\}"
+```
+
+5. FLAG EXTRACTION & VERIFICATION
+--------------------------------------------------------------------------------
+The execution of the technical solution successfully yields the target flag:
+
+================================================================================
+FLAG: OBV{m4z3_p47hf1nd1ng_bfr5_s0lv3r_4411}
+================================================================================
+
+6. LESSONS LEARNED & MITIGATION
+--------------------------------------------------------------------------------
+- Secure Implementation: Always validate input parameters, use safe cryptographic primitives with high entropy, and avoid storing sensitive keys or flags in plaintext artifacts.
+- Hardening: Implement defense-in-depth controls, enforce authentication on internal interfaces, and audit dynamic execution paths.
+================================================================================

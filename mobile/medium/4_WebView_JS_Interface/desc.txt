@@ -1,0 +1,10 @@
+===[ WEBVIEW JS INTERFACE ]===
+Difficulty: MEDIUM
+Category: Mobile
+Source: Real Telegram APK
+
+WebView addJavascriptInterface exploitation.
+
+File: app.apk
+
+Flag: OBV{...}

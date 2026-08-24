@@ -1,0 +1,9 @@
+===[ KNOWN PLAINTEXT ZIP ]===
+Difficulty: MEDIUM
+Category: Misc
+
+ZIP archive encryption with known header bytes.
+
+File: zip_data.bin
+
+Flag: OBV{...}

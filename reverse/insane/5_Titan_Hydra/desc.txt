@@ -1,0 +1,8 @@
+TACTICAL SITUATION:
+Verification is split across native x86_64, an embedded WebAssembly module, and an ARM64 worker process over UNIX IPC.
+
+MISSION OBJECTIVES:
+- Reverse x86_64, WebAssembly, and ARM64 IPC routines.
+- Combine multi-architecture constraints to extract the flag.
+
+FLAG FORMAT: OBV{...}

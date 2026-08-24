@@ -1,0 +1,10 @@
+===[ NATIVE SO LIBRARY REVERSING ]===
+Difficulty: HARD
+Category: Mobile
+Source: Real UC Browser APK
+
+Reverse native ELF shared library `libnative.so` using Ghidra.
+
+File: app.apk
+
+Flag: OBV{...}

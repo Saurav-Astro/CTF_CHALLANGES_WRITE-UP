@@ -1,0 +1,13 @@
+OPERATION: KEY MATRIX
+
+“The killing time is over.” — Captain Price
+
+A suspicious ELF binary has been recovered. The payload is hidden, the trail is cold, and your only intel is:
+
+OBV{...}
+
+Objective: Analyze the binary, find the hidden payload, recover the key, and extract the flag.
+
+File: challenge.bin
+
+Find the key. Break the matrix.

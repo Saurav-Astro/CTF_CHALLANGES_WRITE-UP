@@ -1,0 +1,8 @@
+TACTICAL SITUATION:
+Enemy signal routing uses a 3x3 matrix multiplication transformation matrix over modulo 256 arithmetic protected by ptrace anti-tracing.
+
+MISSION OBJECTIVES:
+- Invert the 3x3 key matrix mod 256.
+- Recover the original vector authorization passcode.
+
+FLAG FORMAT: OBV{...}

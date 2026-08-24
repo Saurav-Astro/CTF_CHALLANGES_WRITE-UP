@@ -1,0 +1,9 @@
+===[ BRAINFUCK INTERPRETER ]===
+Difficulty: EASY
+Category: Misc
+
+Execute Brainfuck esolang script.
+
+File: script.bf
+
+Flag: OBV{...}

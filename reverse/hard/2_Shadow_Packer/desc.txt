@@ -1,0 +1,8 @@
+TACTICAL SITUATION:
+Enemy engineers embedded authorization logic inside an encrypted ELF packer stub that allocates dynamic memory, unpacks payload code into RWX pages, and executes a multi-key verification function.
+
+MISSION OBJECTIVES:
+- Dump runtime unpacked memory or analyze the custom decompressor stub.
+- Recover key validation constants to reconstruct the flag passcode.
+
+FLAG FORMAT: OBV{...}

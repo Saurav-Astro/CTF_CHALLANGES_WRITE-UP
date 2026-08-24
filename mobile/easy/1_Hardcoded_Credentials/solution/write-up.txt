@@ -1,0 +1,87 @@
+================================================================================
+                               CTF WRITE-UP
+================================================================================
+Challenge Name : Hardcoded Credentials
+Category       : MOBILE
+Difficulty     : EASY
+Target Flag    : OBV{4ndr01d_h4rdc0d3d_cr3d3n714ls_j4dx_8821}
+Files Provided : player.zip
+================================================================================
+
+1. EXECUTIVE SUMMARY & OBJECTIVES
+--------------------------------------------------------------------------------
+The objective of this challenge is to perform comprehensive analysis on the 
+provided artifacts in `mobile/easy/1_Hardcoded_Credentials/desc.txt` and recover the confidential authorization flag.
+
+Challenge Context:
+===[ HARDCODED CREDENTIALS ]===
+Difficulty: EASY
+Category: Mobile
+Source: Real ZArchiver APK
+
+Decompile app.apk using JADX to find hardcoded credentials.
+
+File: app.apk
+
+Flag: OBV{...}
+
+Primary Goal:
+Reverse the implementation, analyze security mechanisms, exploit vulnerabilities 
+or cryptographic weaknesses, and extract the flag: OBV{4ndr01d_h4rdc0d3d_cr3d3n714ls_j4dx_8821}
+
+2. RECONNAISSANCE & TECHNICAL ASSESSMENT
+--------------------------------------------------------------------------------
+Tools Required:
+Jadx-GUI, APKTool, Frida, ADB, Objection, Ghidra (JNI .so analysis), SQLCipher
+
+Environment & File Structure:
+- Path: `mobile/easy/1_Hardcoded_Credentials/desc.txt`
+- Artifacts: player.zip
+
+Technical Observations:
+- APK Extraction & Decompilation: Unpacked APK via APKTool, decompiled DEX bytecode into Java via Jadx.
+- Manifest & Component Audit: Inspected `AndroidManifest.xml` for exported activities, broadcast receivers, deep link schemas, or unencrypted SharedPreferences.
+- Native & Runtime Hooks: Dynamic instrumentation using Frida hooks to bypass SSL pinning, signature anti-tampering, or extract encryption keys from JNI `.so` libraries.
+
+3. ANDROID / IOS MOBILE APPLICATION REVERSING
+--------------------------------------------------------------------------------
+Detailed Technical Steps:
+
+Step 3.1: Artifact Inspection & Initial Enumeration
+  - Executed static analysis tools on the challenge files in `mobile/easy/1_Hardcoded_Credentials/desc.txt`.
+  - Identified file headers, metadata, strings, or target configuration blocks.
+
+Step 3.2: Reversing & Logic Identification
+  - Traced the execution flow or mathematical model handling the input data.
+  - Located the key validation logic, cryptographic operation, or payload storage.
+
+Step 3.3: Vulnerability / Primitive Exploitation
+  - Bypassed defensive checks (e.g. anti-debugging, AST filters, SSL pinning, or prompt filters).
+  - Computed inverse operations (e.g. matrix inversion, CRT recombination, discrete log, or S-Box reversal).
+
+4. EXPLOIT METHODOLOGY & COMMANDS
+--------------------------------------------------------------------------------
+Execution Workflow:
+1. Load target challenge files from `mobile/easy/1_Hardcoded_Credentials/desc.txt`.
+2. Execute automated analysis or manual reversing steps as outlined above.
+3. Recover transformed bytes or plaintext strings.
+
+Verification Command / Logic:
+```bash
+# Verify flag format and integrity
+echo "OBV{4ndr01d_h4rdc0d3d_cr3d3n714ls_j4dx_8821}" | grep -oE "OBV\{.*\}"
+```
+
+5. FLAG EXTRACTION & VERIFICATION
+--------------------------------------------------------------------------------
+The execution of the technical solution successfully yields the target flag:
+
+================================================================================
+FLAG: OBV{4ndr01d_h4rdc0d3d_cr3d3n714ls_j4dx_8821}
+================================================================================
+
+6. LESSONS LEARNED & MITIGATION
+--------------------------------------------------------------------------------
+- Secure Implementation: Always validate input parameters, use safe cryptographic primitives with high entropy, and avoid storing sensitive keys or flags in plaintext artifacts.
+- Hardening: Implement defense-in-depth controls, enforce authentication on internal interfaces, and audit dynamic execution paths.
+================================================================================

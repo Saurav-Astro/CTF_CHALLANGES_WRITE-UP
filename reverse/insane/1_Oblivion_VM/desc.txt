@@ -1,0 +1,8 @@
+TACTICAL SITUATION:
+Shadow network operatives deployed a virtualized execution framework guarded by hardware timing traps and anti-debugging checks.
+
+MISSION OBJECTIVES:
+- Bypass anti-analysis countermeasures inside the player binary.
+- Reverse the custom VM opcode dispatcher and solve the constraint system.
+
+FLAG FORMAT: OBV{...}

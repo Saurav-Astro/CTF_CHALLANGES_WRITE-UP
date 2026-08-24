@@ -1,0 +1,8 @@
+16-Round Substitution-Permutation Network (SPN) block cipher utilizing a custom 4-bit S-Box.
+
+MISSION OBJECTIVES:
+1. Load S-Box mapping table, differential pairs, and ciphertext from `spn_16round.json`.
+2. Construct the Difference Distribution Table (DDT) of the 4-bit S-Box.
+3. Trace differential characteristics $\Delta P \rightarrow \Delta C$ to extract round subkeys and recover the flag.
+
+FLAG FORMAT: OBV{...}

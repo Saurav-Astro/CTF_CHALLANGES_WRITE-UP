@@ -1,0 +1,9 @@
+===[ SELF REFERENTIAL QUINE VULN ]===
+Difficulty: INSANE
+Category: Misc
+
+Exploiting quine source code reflection vulnerability.
+
+File: quine.py
+
+Flag: OBV{...}

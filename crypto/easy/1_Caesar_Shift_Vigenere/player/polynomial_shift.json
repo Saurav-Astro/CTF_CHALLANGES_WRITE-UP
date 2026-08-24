@@ -1,0 +1,12 @@
+{
+  "modular_base": 256,
+  "poly_coeffs": [
+    17,
+    31,
+    47,
+    83
+  ],
+  "ct_hex": "829fe374a98ef42ca190ff2c92cdbd65ac91f9699b91ef2c6a8ef058968efd6166cfec5b6792be5c9294c42a94da",
+  "decoy_key": "0xDEADBEEF",
+  "decoy_ct_hex": "4f42567b66616b655f61695f747261707d"
+}

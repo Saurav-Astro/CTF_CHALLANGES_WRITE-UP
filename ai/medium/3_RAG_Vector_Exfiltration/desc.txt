@@ -1,0 +1,9 @@
+===[ OPERATION RAG SEARCH ]===
+
+A Retrieval-Augmented Generation (RAG) system stores document chunks and their 4D vector embeddings in `vector_db.json`.
+
+Search the vector database by computing cosine similarity against the query vector `[1.0, 1.0, 0.0, 0.0]`. Locate the document chunk with the highest cosine similarity to retrieve the flag.
+
+File : vector_db.json
+
+Flag format: OBV{...}

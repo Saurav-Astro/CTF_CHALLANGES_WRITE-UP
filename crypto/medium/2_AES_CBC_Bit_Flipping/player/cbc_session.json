@@ -1,0 +1,7 @@
+{
+  "initial_vector_hex": "716c7a68c03f3d0b2d213f3c294f7427",
+  "ciphertext_hex": "d110fd28ed0db8699a9550b4142f5ff83509a97417306ee23f64c6c33d6490b0",
+  "target_role": "admin=True",
+  "decoy_key": "0x987654321",
+  "decoy_ct_hex": "4f42567b66616b655f61695f747261707d"
+}

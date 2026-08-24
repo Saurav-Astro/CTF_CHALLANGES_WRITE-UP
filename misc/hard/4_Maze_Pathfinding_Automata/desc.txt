@@ -1,0 +1,9 @@
+===[ MAZE PATHFINDING AUTOMATA ]===
+Difficulty: HARD
+Category: Misc
+
+Breadth-first search shortest path in matrix grid.
+
+File: maze.json
+
+Flag: OBV{...}

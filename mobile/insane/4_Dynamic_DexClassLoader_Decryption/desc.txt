@@ -1,0 +1,10 @@
+===[ DYNAMIC DEXCLASSLOADER DECRYPTION ]===
+Difficulty: INSANE
+Category: Mobile
+Source: Real CapCut APK
+
+Decrypt dynamically loaded encrypted DEX payload.
+
+File: app.apk
+
+Flag: OBV{...}

@@ -1,0 +1,8 @@
+TACTICAL SITUATION:
+Target authentication is compiled with OLLVM Control Flow Flattening and Mixed-Boolean Arithmetic (MBA) polynomials.
+
+MISSION OBJECTIVES:
+- De-flatten the control flow graph using symbolic execution or basic block tracing.
+- Simplify MBA polynomial identities to extract the master key.
+
+FLAG FORMAT: OBV{...}

@@ -1,0 +1,10 @@
+===[ OPERATION BACKDOOR RECOVERY ]===
+
+A neural network model (`poisoned_model.npz`) has normal weights sampled from a standard Gaussian distribution ($\mu=0, \sigma=0.01$).
+However, 4 specific weight matrix indices contain anomalous values (outliers with magnitude $> 10.0$).
+
+Convert the 4 outlier float values to integers, cast to ASCII, and construct the flag.
+
+File : poisoned_model.npz
+
+Flag format: OBV{...}

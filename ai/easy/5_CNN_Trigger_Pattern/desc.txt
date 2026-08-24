@@ -1,0 +1,9 @@
+===[ OPERATION TRIGGER PATTERN ]===
+
+An AI surveillance camera model (`trigger_model.json`) uses a 1D/2D weight matrix trigger check.
+The model weights in the first layer contain a secret 4-element pattern `[0.13, 0.37, 0.42, 0.99]` stored in `layer1.bias`.
+
+Inspect the model structure JSON file to retrieve the 4 trigger values, multiply each by 100 to get their integer representation, and build the flag.
+
+
+Flag format: OBV{...}

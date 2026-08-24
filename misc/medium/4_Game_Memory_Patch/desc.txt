@@ -1,0 +1,9 @@
+===[ GAME MEMORY PATCH ]===
+Difficulty: MEDIUM
+Category: Misc
+
+Memory score address patch to trigger win condition.
+
+File: game_dump.bin
+
+Flag: OBV{...}

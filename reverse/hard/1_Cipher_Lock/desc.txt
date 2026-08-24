@@ -1,0 +1,8 @@
+TACTICAL SITUATION:
+Enemy operatives protected an encryption vault using a 32-round Feistel network with dynamic key scheduling guarded by ptrace anti-tracing and LD_PRELOAD library hooking detection.
+
+MISSION OBJECTIVES:
+- Neutralize ptrace and anti-hooking protections inside the player binary.
+- Reverse the 32-round non-linear Feistel key schedule and round functions to recover the flag.
+
+FLAG FORMAT: OBV{...}

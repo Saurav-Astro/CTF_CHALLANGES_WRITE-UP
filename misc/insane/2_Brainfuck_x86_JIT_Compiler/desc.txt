@@ -1,0 +1,9 @@
+===[ BRAINFUCK X86 JIT COMPILER ]===
+Difficulty: INSANE
+Category: Misc
+
+Reversing machine code emitted by JIT compiler.
+
+File: jit.json
+
+Flag: OBV{...}

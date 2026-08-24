@@ -1,0 +1,10 @@
+===[ DUAL ARCHITECTURE JNI REVERSING ]===
+Difficulty: INSANE
+Category: Mobile
+Source: Real PUBG Mobile Lite APK
+
+Dual x86_64 and ARM64 JNI binary reversing.
+
+File: app.apk
+
+Flag: OBV{...}

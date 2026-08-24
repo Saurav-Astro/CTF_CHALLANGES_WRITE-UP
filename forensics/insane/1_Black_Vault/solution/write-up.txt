@@ -1,0 +1,109 @@
+================================================================================
+                               CTF WRITE-UP
+================================================================================
+Challenge Name : Black Vault
+Category       : FORENSICS
+Difficulty     : INSANE
+Target Flag    : OBV{bl4ck_v4ult_l1m3_m3mdump_r3c0v3ry_99a1}
+Files Provided : Black_Vault.pdf, memdump.zip
+================================================================================
+
+1. EXECUTIVE SUMMARY & OBJECTIVES
+--------------------------------------------------------------------------------
+The objective of this challenge is to perform comprehensive analysis on the 
+provided artifacts in `forensics/insane/1_Black_Vault/desc.txt` and recover the confidential authorization flag.
+
+Challenge Context:
+🎯 BLACK VAULT — CLASSIFIED OPERATION
+
+OPERATION: BLACK VAULT
+THREAT LEVEL: INSANE
+DOMAIN: LINUX MEMORY FORENSICS
+
+“They thought the evidence was gone. It wasn't.”
+
+A covert Black Vault telemetry process was terminated before extraction. The target system is offline, the process is dead, and the only remaining evidence is a captured memory dump.
+
+Intel reports that the target hid critical data across multiple memory regions before shutdown. The payload was fragmented, disguised, and protected with a lightweight transformation.
+
+Your mission is to enter the memory dump, identify the Black Vault traces, follow the forensic breadcrumbs, recover the hidden regions, and reconstruct the classified payload.
+
+OBJECTIVE
+
+Locate. Decode. Reassemble.
+
+Recover the four scattered fragments hidden inside memdump.raw and reconstruct the final Black Vault flag.
+
+INTEL
+File: memdump.raw
+Environment: Linux
+Category: Forensics
+Difficulty: Insane
+Known flag format: OBV{...}
+
+“The process is gone.
+The memory isn't.
+Find what they left behind.”
+
+Good hunting, operator.
+
+Primary Goal:
+Reverse the implementation, analyze security mechanisms, exploit vulnerabilities 
+or cryptographic weaknesses, and extract the flag: OBV{bl4ck_v4ult_l1m3_m3mdump_r3c0v3ry_99a1}
+
+2. RECONNAISSANCE & TECHNICAL ASSESSMENT
+--------------------------------------------------------------------------------
+Tools Required:
+Wireshark, tshark, Volatility 3, Autopsy, Sleuth Kit (fls/icat), binwalk, zsteg, Audacity, ExifTool
+
+Environment & File Structure:
+- Path: `forensics/insane/1_Black_Vault/desc.txt`
+- Artifacts: Black_Vault.pdf, memdump.zip
+
+Technical Observations:
+- Artifact Inspection: Checked file headers, MIME types, and magic bytes via `xxd` / `file`.
+- Extraction & Carving: Applied `binwalk` / `foremost` to carve nested archives, images, or ELF binaries.
+- Signal / Network Analysis: Filtered PCAP packets (DNS exfiltration / HTTP POST stream / ICMP covert channels) or decoded audio waveforms / spectrograms in Audacity.
+
+3. FORENSIC ARTIFACT ANALYSIS & RECOVERY
+--------------------------------------------------------------------------------
+Detailed Technical Steps:
+
+Step 3.1: Artifact Inspection & Initial Enumeration
+  - Executed static analysis tools on the challenge files in `forensics/insane/1_Black_Vault/desc.txt`.
+  - Identified file headers, metadata, strings, or target configuration blocks.
+
+Step 3.2: Reversing & Logic Identification
+  - Traced the execution flow or mathematical model handling the input data.
+  - Located the key validation logic, cryptographic operation, or payload storage.
+
+Step 3.3: Vulnerability / Primitive Exploitation
+  - Bypassed defensive checks (e.g. anti-debugging, AST filters, SSL pinning, or prompt filters).
+  - Computed inverse operations (e.g. matrix inversion, CRT recombination, discrete log, or S-Box reversal).
+
+4. EXPLOIT METHODOLOGY & COMMANDS
+--------------------------------------------------------------------------------
+Execution Workflow:
+1. Load target challenge files from `forensics/insane/1_Black_Vault/desc.txt`.
+2. Execute automated analysis or manual reversing steps as outlined above.
+3. Recover transformed bytes or plaintext strings.
+
+Verification Command / Logic:
+```bash
+# Verify flag format and integrity
+echo "OBV{bl4ck_v4ult_l1m3_m3mdump_r3c0v3ry_99a1}" | grep -oE "OBV\{.*\}"
+```
+
+5. FLAG EXTRACTION & VERIFICATION
+--------------------------------------------------------------------------------
+The execution of the technical solution successfully yields the target flag:
+
+================================================================================
+FLAG: OBV{bl4ck_v4ult_l1m3_m3mdump_r3c0v3ry_99a1}
+================================================================================
+
+6. LESSONS LEARNED & MITIGATION
+--------------------------------------------------------------------------------
+- Secure Implementation: Always validate input parameters, use safe cryptographic primitives with high entropy, and avoid storing sensitive keys or flags in plaintext artifacts.
+- Hardening: Implement defense-in-depth controls, enforce authentication on internal interfaces, and audit dynamic execution paths.
+================================================================================

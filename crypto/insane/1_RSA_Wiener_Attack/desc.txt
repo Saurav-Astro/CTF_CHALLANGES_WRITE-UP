@@ -1,0 +1,9 @@
+Intercepted a high-security transmission locked inside a Pohlig-Hellman Smooth Order Finite Field Discrete Logarithm system.
+
+MISSION OBJECTIVES:
+1. Load base generator `g`, public target `h`, field prime `p`, and `smooth_factors` from `matrix_ring.json`.
+2. Execute the Pohlig-Hellman algorithm to compute the discrete logarithm `secret_k` modulo smooth factor powers.
+3. Combine prime-power remainders using the Chinese Remainder Theorem (CRT).
+4. Hash `secret_k` with SHA-256 to derive the AES key and decrypt the flag.
+
+FLAG FORMAT: OBV{...}

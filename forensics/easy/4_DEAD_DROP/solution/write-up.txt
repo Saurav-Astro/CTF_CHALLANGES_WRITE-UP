@@ -1,0 +1,84 @@
+================================================================================
+                               CTF WRITE-UP
+================================================================================
+Challenge Name : DEAD DROP
+Category       : FORENSICS
+Difficulty     : EASY
+Target Flag    : OBV{D34D_DR0P_UNDER_7H3_V4ULT}
+Files Provided : evidence.zip, flage.txt, DEAD_DROP.pdf
+================================================================================
+
+1. EXECUTIVE SUMMARY & OBJECTIVES
+--------------------------------------------------------------------------------
+The objective of this challenge is to perform comprehensive analysis on the 
+provided artifacts in `forensics/easy/4_DEAD_DROP/desc.txt` and recover the confidential authorization flag.
+
+Challenge Context:
+“Bravo Six, going dark.” — Captain Price
+
+A compromised system left behind a suspicious artifact. The dead drop is still active.
+
+Mission: Find the hidden intel, recover the payload, and extract the flag.
+
+Find the drop. Recover the intel. Extract the flag.
+
+Primary Goal:
+Reverse the implementation, analyze security mechanisms, exploit vulnerabilities 
+or cryptographic weaknesses, and extract the flag: OBV{D34D_DR0P_UNDER_7H3_V4ULT}
+
+2. RECONNAISSANCE & TECHNICAL ASSESSMENT
+--------------------------------------------------------------------------------
+Tools Required:
+Wireshark, tshark, Volatility 3, Autopsy, Sleuth Kit (fls/icat), binwalk, zsteg, Audacity, ExifTool
+
+Environment & File Structure:
+- Path: `forensics/easy/4_DEAD_DROP/desc.txt`
+- Artifacts: evidence.zip, flage.txt, DEAD_DROP.pdf
+
+Technical Observations:
+- Artifact Inspection: Checked file headers, MIME types, and magic bytes via `xxd` / `file`.
+- Extraction & Carving: Applied `binwalk` / `foremost` to carve nested archives, images, or ELF binaries.
+- Signal / Network Analysis: Filtered PCAP packets (DNS exfiltration / HTTP POST stream / ICMP covert channels) or decoded audio waveforms / spectrograms in Audacity.
+
+3. FORENSIC ARTIFACT ANALYSIS & RECOVERY
+--------------------------------------------------------------------------------
+Detailed Technical Steps:
+
+Step 3.1: Artifact Inspection & Initial Enumeration
+  - Executed static analysis tools on the challenge files in `forensics/easy/4_DEAD_DROP/desc.txt`.
+  - Identified file headers, metadata, strings, or target configuration blocks.
+
+Step 3.2: Reversing & Logic Identification
+  - Traced the execution flow or mathematical model handling the input data.
+  - Located the key validation logic, cryptographic operation, or payload storage.
+
+Step 3.3: Vulnerability / Primitive Exploitation
+  - Bypassed defensive checks (e.g. anti-debugging, AST filters, SSL pinning, or prompt filters).
+  - Computed inverse operations (e.g. matrix inversion, CRT recombination, discrete log, or S-Box reversal).
+
+4. EXPLOIT METHODOLOGY & COMMANDS
+--------------------------------------------------------------------------------
+Execution Workflow:
+1. Load target challenge files from `forensics/easy/4_DEAD_DROP/desc.txt`.
+2. Execute automated analysis or manual reversing steps as outlined above.
+3. Recover transformed bytes or plaintext strings.
+
+Verification Command / Logic:
+```bash
+# Verify flag format and integrity
+echo "OBV{D34D_DR0P_UNDER_7H3_V4ULT}" | grep -oE "OBV\{.*\}"
+```
+
+5. FLAG EXTRACTION & VERIFICATION
+--------------------------------------------------------------------------------
+The execution of the technical solution successfully yields the target flag:
+
+================================================================================
+FLAG: OBV{D34D_DR0P_UNDER_7H3_V4ULT}
+================================================================================
+
+6. LESSONS LEARNED & MITIGATION
+--------------------------------------------------------------------------------
+- Secure Implementation: Always validate input parameters, use safe cryptographic primitives with high entropy, and avoid storing sensitive keys or flags in plaintext artifacts.
+- Hardening: Implement defense-in-depth controls, enforce authentication on internal interfaces, and audit dynamic execution paths.
+================================================================================

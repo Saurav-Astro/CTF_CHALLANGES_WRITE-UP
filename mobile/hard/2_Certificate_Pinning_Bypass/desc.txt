@@ -1,0 +1,10 @@
+===[ CERTIFICATE PINNING BYPASS ]===
+Difficulty: HARD
+Category: Mobile
+Source: Real OneState RP APK
+
+Bypass OkHttp SSL Certificate Pinning using Frida.
+
+File: app.apk
+
+Flag: OBV{...}

@@ -1,0 +1,8 @@
+TACTICAL SITUATION:
+Enemy command automaton evaluates passcode validation through 1D linear state transition accumulation guarded by ptrace anti-tracing.
+
+MISSION OBJECTIVES:
+- Trace 1D accumulator state transitions.
+- Reconstruct the state walk path to solve the root passcode.
+
+FLAG FORMAT: OBV{...}

@@ -1,0 +1,10 @@
+===[ OPERATION GRADIENT PROMPT OPTIMIZATION ]===
+
+An AI security guard model (`prompt_loss_eval.py`) computes a multi-dimensional token loss function:
+`L(x) = sum( (x_i - target_i)^2 )` for a 4-token input embedding vector `x = [x0, x1, x2, x3]`.
+
+The target embedding vector is hidden inside the model evaluator. Write a gradient descent optimizer (`x = x - lr * 2 * (x - target)`) to find the optimal input vector `x` that reduces the loss to 0. Convert the 4 integer components of `x` to ASCII characters to unlock the flag.
+
+File : prompt_loss_eval.py
+
+Flag format: OBV{...}

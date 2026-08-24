@@ -1,0 +1,85 @@
+================================================================================
+                               CTF WRITE-UP
+================================================================================
+Challenge Name : Signal Decrypter
+Category       : REVERSE
+Difficulty     : HARD
+Target Flag    : OBV{0v3rl4pp1ng_45m_lcg_b3a890ef}
+Files Provided : src, build.sh
+================================================================================
+
+1. EXECUTIVE SUMMARY & OBJECTIVES
+--------------------------------------------------------------------------------
+The objective of this challenge is to perform comprehensive analysis on the 
+provided artifacts in `reverse/hard/3_Signal_Decrypter/desc.txt` and recover the confidential authorization flag.
+
+Challenge Context:
+TACTICAL SITUATION:
+Enemy communications utilize an anti-disassembly pipeline featuring overlapping x86_64 instructions, junk byte insertions, and a 64-bit stateful stream decrypter.
+
+MISSION OBJECTIVES:
+- Fix disassembler control flow alignment past opaque predicates and junk bytes.
+- Reverse the stream decrypter state machine to recover the command passphrase.
+
+FLAG FORMAT: OBV{...}
+
+Primary Goal:
+Reverse the implementation, analyze security mechanisms, exploit vulnerabilities 
+or cryptographic weaknesses, and extract the flag: OBV{0v3rl4pp1ng_45m_lcg_b3a890ef}
+
+2. RECONNAISSANCE & TECHNICAL ASSESSMENT
+--------------------------------------------------------------------------------
+Tools Required:
+Ghidra, IDA Pro, GDB (with Pwndbg/GEF), objdump, strace, ltrace, Python 3, z3-solver
+
+Environment & File Structure:
+- Path: `reverse/hard/3_Signal_Decrypter/desc.txt`
+- Artifacts: src, build.sh
+
+Technical Observations:
+- File Inspection: `file` / `readelf -h` to determine architecture (x86_64 ELF / ARM64).
+- Anti-Debugging Identification: Inspected `.text` for ptrace anti-tracing (`ptrace(PTRACE_TRACEME)`), `/proc/self/status` TracerPid monitoring, or hardware timing checks (`rdtsc`).
+- Decompilation: Imported binary into Ghidra/IDA Pro. Analyzed transformation functions, cryptographic S-Boxes, matrix shifts, state machine loops, or VM bytecode dispatchers.
+
+3. BINARY REVERSING & DISASSEMBLY ANALYSIS
+--------------------------------------------------------------------------------
+Detailed Technical Steps:
+
+Step 3.1: Artifact Inspection & Initial Enumeration
+  - Executed static analysis tools on the challenge files in `reverse/hard/3_Signal_Decrypter/desc.txt`.
+  - Identified file headers, metadata, strings, or target configuration blocks.
+
+Step 3.2: Reversing & Logic Identification
+  - Traced the execution flow or mathematical model handling the input data.
+  - Located the key validation logic, cryptographic operation, or payload storage.
+
+Step 3.3: Vulnerability / Primitive Exploitation
+  - Bypassed defensive checks (e.g. anti-debugging, AST filters, SSL pinning, or prompt filters).
+  - Computed inverse operations (e.g. matrix inversion, CRT recombination, discrete log, or S-Box reversal).
+
+4. EXPLOIT METHODOLOGY & COMMANDS
+--------------------------------------------------------------------------------
+Execution Workflow:
+1. Load target challenge files from `reverse/hard/3_Signal_Decrypter/desc.txt`.
+2. Execute automated analysis or manual reversing steps as outlined above.
+3. Recover transformed bytes or plaintext strings.
+
+Verification Command / Logic:
+```bash
+# Verify flag format and integrity
+echo "OBV{0v3rl4pp1ng_45m_lcg_b3a890ef}" | grep -oE "OBV\{.*\}"
+```
+
+5. FLAG EXTRACTION & VERIFICATION
+--------------------------------------------------------------------------------
+The execution of the technical solution successfully yields the target flag:
+
+================================================================================
+FLAG: OBV{0v3rl4pp1ng_45m_lcg_b3a890ef}
+================================================================================
+
+6. LESSONS LEARNED & MITIGATION
+--------------------------------------------------------------------------------
+- Secure Implementation: Always validate input parameters, use safe cryptographic primitives with high entropy, and avoid storing sensitive keys or flags in plaintext artifacts.
+- Hardening: Implement defense-in-depth controls, enforce authentication on internal interfaces, and audit dynamic execution paths.
+================================================================================

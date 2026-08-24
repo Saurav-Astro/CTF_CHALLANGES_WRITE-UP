@@ -1,0 +1,9 @@
+===[ SAT SMT CONSTRAINT LOGIC ]===
+Difficulty: INSANE
+Category: Misc
+
+SAT solver boolean satisfiability problem.
+
+File: sat.json
+
+Flag: OBV{...}

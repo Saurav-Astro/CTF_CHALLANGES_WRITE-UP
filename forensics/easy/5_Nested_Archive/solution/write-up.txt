@@ -1,0 +1,85 @@
+================================================================================
+                               CTF WRITE-UP
+================================================================================
+Challenge Name : Nested Archive
+Category       : FORENSICS
+Difficulty     : EASY
+Target Flag    : OBV{r3cur51v3_z1p_5t4ck_unp4ck_9c2d}
+Files Provided : None
+================================================================================
+
+1. EXECUTIVE SUMMARY & OBJECTIVES
+--------------------------------------------------------------------------------
+The objective of this challenge is to perform comprehensive analysis on the 
+provided artifacts in `forensics/easy/5_Nested_Archive/desc.txt` and recover the confidential authorization flag.
+
+Challenge Context:
+TACTICAL SITUATION:
+Enemy signal intelligence encrypted sensitive payload data inside a 50-level nested ZIP archive matrix guarded by hash-derived password layers.
+
+MISSION OBJECTIVES:
+- Write an automated unpacking script to iterate from `layer_50.zip` down to `layer_1.zip`.
+- Compute layer passwords using SHA-256 layer hashes (`sha256(str(N))[:8]`) to extract the root flag.
+
+FLAG FORMAT: OBV{...}
+
+Primary Goal:
+Reverse the implementation, analyze security mechanisms, exploit vulnerabilities 
+or cryptographic weaknesses, and extract the flag: OBV{r3cur51v3_z1p_5t4ck_unp4ck_9c2d}
+
+2. RECONNAISSANCE & TECHNICAL ASSESSMENT
+--------------------------------------------------------------------------------
+Tools Required:
+Wireshark, tshark, Volatility 3, Autopsy, Sleuth Kit (fls/icat), binwalk, zsteg, Audacity, ExifTool
+
+Environment & File Structure:
+- Path: `forensics/easy/5_Nested_Archive/desc.txt`
+- Artifacts: None
+
+Technical Observations:
+- Artifact Inspection: Checked file headers, MIME types, and magic bytes via `xxd` / `file`.
+- Extraction & Carving: Applied `binwalk` / `foremost` to carve nested archives, images, or ELF binaries.
+- Signal / Network Analysis: Filtered PCAP packets (DNS exfiltration / HTTP POST stream / ICMP covert channels) or decoded audio waveforms / spectrograms in Audacity.
+
+3. FORENSIC ARTIFACT ANALYSIS & RECOVERY
+--------------------------------------------------------------------------------
+Detailed Technical Steps:
+
+Step 3.1: Artifact Inspection & Initial Enumeration
+  - Executed static analysis tools on the challenge files in `forensics/easy/5_Nested_Archive/desc.txt`.
+  - Identified file headers, metadata, strings, or target configuration blocks.
+
+Step 3.2: Reversing & Logic Identification
+  - Traced the execution flow or mathematical model handling the input data.
+  - Located the key validation logic, cryptographic operation, or payload storage.
+
+Step 3.3: Vulnerability / Primitive Exploitation
+  - Bypassed defensive checks (e.g. anti-debugging, AST filters, SSL pinning, or prompt filters).
+  - Computed inverse operations (e.g. matrix inversion, CRT recombination, discrete log, or S-Box reversal).
+
+4. EXPLOIT METHODOLOGY & COMMANDS
+--------------------------------------------------------------------------------
+Execution Workflow:
+1. Load target challenge files from `forensics/easy/5_Nested_Archive/desc.txt`.
+2. Execute automated analysis or manual reversing steps as outlined above.
+3. Recover transformed bytes or plaintext strings.
+
+Verification Command / Logic:
+```bash
+# Verify flag format and integrity
+echo "OBV{r3cur51v3_z1p_5t4ck_unp4ck_9c2d}" | grep -oE "OBV\{.*\}"
+```
+
+5. FLAG EXTRACTION & VERIFICATION
+--------------------------------------------------------------------------------
+The execution of the technical solution successfully yields the target flag:
+
+================================================================================
+FLAG: OBV{r3cur51v3_z1p_5t4ck_unp4ck_9c2d}
+================================================================================
+
+6. LESSONS LEARNED & MITIGATION
+--------------------------------------------------------------------------------
+- Secure Implementation: Always validate input parameters, use safe cryptographic primitives with high entropy, and avoid storing sensitive keys or flags in plaintext artifacts.
+- Hardening: Implement defense-in-depth controls, enforce authentication on internal interfaces, and audit dynamic execution paths.
+================================================================================

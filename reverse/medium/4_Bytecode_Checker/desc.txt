@@ -1,0 +1,8 @@
+TACTICAL SITUATION:
+Enemy command architecture evaluates passcode authorization inside a virtual machine running custom bytecode instructions (`READ_INPUT`, `XOR_IMM`, `ADD_IMM`, `ROL_IMM`, `CMP_EXP`).
+
+MISSION OBJECTIVES:
+- Disassemble the 8-opcode virtual machine instruction cycle.
+- Reconstruct input transformation instructions to solve the flag.
+
+FLAG FORMAT: OBV{...}

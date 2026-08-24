@@ -1,0 +1,10 @@
+===[ OPERATION WEIGHT VAULT ]===
+
+An intelligence agent recovered a Safetensors weight file (`model.safetensors`) from a compromised AI pipeline.
+Safetensors files store tensor metadata in an unencrypted JSON header before the raw binary float buffers.
+
+Your task: Extract the metadata header from the `.safetensors` file and decode the hidden payload attribute.
+
+File : model.safetensors
+
+Flag format: OBV{...}

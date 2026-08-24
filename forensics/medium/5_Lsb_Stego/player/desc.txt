@@ -1,0 +1,8 @@
+TACTICAL SITUATION:
+Enemy operatives embedded digital payload bits inside high-resolution cover artwork. Signal analysis indicates bitplane steganography across Red and Blue color channels.
+
+MISSION OBJECTIVES:
+- Extract LSB bits from Red and Blue pixel values in raster order.
+- Reconstruct the hidden byte stream to extract the authorization flag.
+
+FLAG FORMAT: OBV{...}

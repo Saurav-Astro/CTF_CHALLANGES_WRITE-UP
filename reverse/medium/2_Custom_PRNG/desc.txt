@@ -1,0 +1,8 @@
+TACTICAL SITUATION:
+Enemy encryption subroutines utilize an Xorshift128 pseudo-random number generator stream cipher coupled with /proc/self/status TracerPid debugger inspection.
+
+MISSION OBJECTIVES:
+- Bypass TracerPid anti-tracing routines inside process status memory.
+- Seed Xorshift128 PRNG to reconstruct keystream XOR sequence and extract flag.
+
+FLAG FORMAT: OBV{...}

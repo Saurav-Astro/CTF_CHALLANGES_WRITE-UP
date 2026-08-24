@@ -1,0 +1,8 @@
+TACTICAL SITUATION:
+Covert operatives disguised sensitive intelligence files inside multi-format polyglot file structures designed to evade automatic file type classifiers.
+
+MISSION OBJECTIVES:
+- Analyze `polyglot.dat` to extract the embedded ZIP structure payload containing `secret.pdf`.
+- Parse PDF stream bytes, unmask XOR `0x2A` payload encoding, and recover the root flag.
+
+FLAG FORMAT: OBV{...}

@@ -1,0 +1,9 @@
+===[ SINGLE BYTE XOR ]===
+Difficulty: EASY
+Category: Crypto
+
+A secret message was XORed with a single byte key.
+
+File: cipher.hex
+
+Flag: OBV{...}

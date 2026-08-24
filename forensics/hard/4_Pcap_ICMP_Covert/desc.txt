@@ -1,0 +1,8 @@
+TACTICAL SITUATION:
+Enemy APT groups exfiltrated sensitive payload data over ICMP ping Echo Request packets encrypted with AES-128-CBC.
+
+MISSION OBJECTIVES:
+- Extract IP Identification (`IP.id`) header values from ICMP packets to reconstruct the 16-byte AES key.
+- Decrypt ICMP Echo Request payload bytes to recover the root flag.
+
+FLAG FORMAT: OBV{...}

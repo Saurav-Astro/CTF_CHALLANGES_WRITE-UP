@@ -1,0 +1,8 @@
+TACTICAL SITUATION:
+Enemy ransomware locked operational drives after attempting to delete Master File Table ($MFT) structures. Alternate Data Stream ($ADS) metadata and $LOGFILE transaction records preserved key material.
+
+MISSION OBJECTIVES:
+- Parse `ntfs_drive.img` $MFT attributes (`$FILE_NAME`, `$DATA` ADS) and $LOGFILE redo records.
+- Reconstruct the 16-byte key and unmask `0x88` XOR flag payload bytes to recover the flag.
+
+FLAG FORMAT: OBV{...}

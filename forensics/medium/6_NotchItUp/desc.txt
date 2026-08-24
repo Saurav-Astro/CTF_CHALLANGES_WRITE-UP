@@ -1,0 +1,15 @@
+An internal security team has discovered an abandoned Windows workstation belonging to Black Vault, a covert operation suspected of storing classified data inside ordinary system telemetry.
+Shortly before the workstation disappeared from the network, an operator named Notch triggered a massive diagnostic session. The machine generated a suspicious Challenge.raw Windows Event Trace Log and was then wiped.
+The security team recovered only one artifact:
+
+Challenge.raw
+No passwords.
+No usernames.
+No instructions.
+
+The only clue left behind is the organization's standard flag format: OBV{...}
+
+Your mission is to investigate the telemetry, identify the hidden payload, and recover what Notch was trying to conceal.
+Objective: Find the hidden Black Vault flag.
+
+"The logs don't lie. They just don't tell you the truth directly."

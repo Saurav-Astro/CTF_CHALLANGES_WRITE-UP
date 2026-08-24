@@ -1,0 +1,10 @@
+===[ SQLITE DB INSPECTION ]===
+Difficulty: EASY
+Category: Mobile
+Source: Real Xender APK
+
+Inspect SQLite database file inside APK assets.
+
+File: app.apk
+
+Flag: OBV{...}

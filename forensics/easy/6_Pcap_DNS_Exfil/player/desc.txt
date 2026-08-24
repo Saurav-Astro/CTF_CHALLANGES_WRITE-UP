@@ -1,0 +1,8 @@
+TACTICAL SITUATION:
+Enemy operatives established a covert DNS tunneling channel to exfiltrate secret authentication tokens outside perimeter defenses.
+
+MISSION OBJECTIVES:
+- Analyze `capture.pcap` network traffic using TShark or Scapy.
+- Reconstruct the exfiltrated DNS subdomain query payloads to recover the flag.
+
+FLAG FORMAT: OBV{...}

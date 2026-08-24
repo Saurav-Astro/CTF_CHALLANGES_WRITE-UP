@@ -1,0 +1,8 @@
+TACTICAL SITUATION:
+Hostile engineers weaponized a self-modifying polymorphic execution module that dynamic-decrypts inside RWX memory.
+
+MISSION OBJECTIVES:
+- Trace dynamic execution inside RWX memory pages.
+- Reverse the 4-round linear transformations to recover the key code.
+
+FLAG FORMAT: OBV{...}

@@ -1,0 +1,8 @@
+TACTICAL SITUATION:
+A hostile authentication worker process crashed after storing encrypted authorization key structures in dynamically allocated heap memory masked with XOR key `0x1F`.
+
+MISSION OBJECTIVES:
+- Analyze `process.core` ELF 64-bit Core Dump using GDB, Radare2, or Python struct parsers.
+- Locate the heap node marker (`SECRET_NODE_v1`), extract payload bytes, and unmask `0x1F` XOR to recover the flag.
+
+FLAG FORMAT: OBV{...}

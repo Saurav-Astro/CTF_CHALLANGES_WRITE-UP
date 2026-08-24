@@ -1,0 +1,10 @@
+===[ NATIVE ARM64 ANTI DEBUGGING ]===
+Difficulty: INSANE
+Category: Mobile
+Source: Real Subway Surfers APK
+
+Bypass ptrace and /proc/self/status TracerPid check.
+
+File: app.apk
+
+Flag: OBV{...}

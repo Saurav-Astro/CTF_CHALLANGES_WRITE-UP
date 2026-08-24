@@ -1,0 +1,9 @@
+===[ CAESAR SUBSTITUTION ]===
+Difficulty: EASY
+Category: Crypto
+
+ROT13 / Caesar cipher shifted by 13.
+
+File: cipher.txt
+
+Flag: OBV{...}

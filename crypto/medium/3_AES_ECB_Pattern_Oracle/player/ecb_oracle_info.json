@@ -1,0 +1,5 @@
+{
+  "cipher_type": "AES-ECB-128",
+  "decoy_key": "0x55555555",
+  "decoy_ct_hex": "4f42567b66616b655f61695f747261707d"
+}

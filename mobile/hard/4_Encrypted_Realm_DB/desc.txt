@@ -1,0 +1,10 @@
+===[ ENCRYPTED REALM DB ]===
+Difficulty: HARD
+Category: Mobile
+Source: Real YouTube APK
+
+Recover 64-byte Realm database encryption key.
+
+File: app.apk
+
+Flag: OBV{...}

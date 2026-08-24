@@ -1,0 +1,8 @@
+TACTICAL SITUATION:
+Enemy C2 channels encrypted outbound network sessions (`network.pcap`) using ephemeral RSA-2048 keys. Incident responders captured live process heap RAM (`process_dump.raw`) before host termination.
+
+MISSION OBJECTIVES:
+- Extract the RSA-2048 private key PEM structure from `process_dump.raw`.
+- Decrypt the encrypted C2 TCP stream in `network.pcap` to recover the flag.
+
+FLAG FORMAT: OBV{...}

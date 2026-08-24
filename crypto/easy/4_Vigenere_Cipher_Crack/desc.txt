@@ -1,0 +1,9 @@
+===[ VIGENERE CIPHER ]===
+Difficulty: EASY
+Category: Crypto
+
+Encrypted with Vigenere cipher using key 'KRAKEN'.
+
+File: cipher.txt
+
+Flag: OBV{...}

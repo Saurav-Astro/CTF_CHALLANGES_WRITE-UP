@@ -1,0 +1,10 @@
+===[ HARDCODED CREDENTIALS ]===
+Difficulty: EASY
+Category: Mobile
+Source: Real ZArchiver APK
+
+Decompile app.apk using JADX to find hardcoded credentials.
+
+File: app.apk
+
+Flag: OBV{...}

@@ -1,0 +1,9 @@
+===[ CUSTOM PROTOCOL STATE MACHINE ]===
+Difficulty: HARD
+Category: Misc
+
+State machine transition packet sequence solver.
+
+File: protocol_spec.json
+
+Flag: OBV{...}

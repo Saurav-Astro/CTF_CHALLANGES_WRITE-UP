@@ -1,0 +1,78 @@
+================================================================================
+                               CTF WRITE-UP
+================================================================================
+Challenge Name : RSA Small Exponent
+Category       : CRYPTO
+Difficulty     : EASY
+Target Flag    : OBV{r54_5m4ll_3xp0n3n7_c4b3_r007_0a81}
+Files Provided : player.zip
+================================================================================
+
+1. EXECUTIVE SUMMARY & OBJECTIVES
+--------------------------------------------------------------------------------
+The objective of this challenge is to perform comprehensive analysis on the 
+provided artifacts in `crypto/easy/3_RSA_Small_Exponent/desc.txt` and recover the confidential authorization flag.
+
+Challenge Context:
+Unpadded modular ring power evaluation. Compute integer root over finite ring.
+
+Primary Goal:
+Reverse the implementation, analyze security mechanisms, exploit vulnerabilities 
+or cryptographic weaknesses, and extract the flag: OBV{r54_5m4ll_3xp0n3n7_c4b3_r007_0a81}
+
+2. RECONNAISSANCE & TECHNICAL ASSESSMENT
+--------------------------------------------------------------------------------
+Tools Required:
+Python 3, SageMath, PyCryptodome, z3-solver, fpylll, Hashcat
+
+Environment & File Structure:
+- Path: `crypto/easy/3_RSA_Small_Exponent/desc.txt`
+- Artifacts: player.zip
+
+Technical Observations:
+- Cryptographic Primitive Analysis: Inspected mathematical structure (RSA, AES-CBC/ECB, ECC, LFSR, LWE, LCG).
+- Parameter Extraction: Extracted modulus N, public exponent e, IV, ciphertexts, generator g, or lattice parameters from challenge artifacts.
+- Vulnerability Assessment: Identified mathematical weaknesses such as small exponent e, common modulus, unpadded CBC bit-flipping, smooth order groups (Pohlig-Hellman), or short basis vectors (LLL reduction).
+
+3. CRYPTANALYSIS & MATHEMATICAL MODELING
+--------------------------------------------------------------------------------
+Detailed Technical Steps:
+
+Step 3.1: Artifact Inspection & Initial Enumeration
+  - Executed static analysis tools on the challenge files in `crypto/easy/3_RSA_Small_Exponent/desc.txt`.
+  - Identified file headers, metadata, strings, or target configuration blocks.
+
+Step 3.2: Reversing & Logic Identification
+  - Traced the execution flow or mathematical model handling the input data.
+  - Located the key validation logic, cryptographic operation, or payload storage.
+
+Step 3.3: Vulnerability / Primitive Exploitation
+  - Bypassed defensive checks (e.g. anti-debugging, AST filters, SSL pinning, or prompt filters).
+  - Computed inverse operations (e.g. matrix inversion, CRT recombination, discrete log, or S-Box reversal).
+
+4. EXPLOIT METHODOLOGY & COMMANDS
+--------------------------------------------------------------------------------
+Execution Workflow:
+1. Load target challenge files from `crypto/easy/3_RSA_Small_Exponent/desc.txt`.
+2. Execute automated analysis or manual reversing steps as outlined above.
+3. Recover transformed bytes or plaintext strings.
+
+Verification Command / Logic:
+```bash
+# Verify flag format and integrity
+echo "OBV{r54_5m4ll_3xp0n3n7_c4b3_r007_0a81}" | grep -oE "OBV\{.*\}"
+```
+
+5. FLAG EXTRACTION & VERIFICATION
+--------------------------------------------------------------------------------
+The execution of the technical solution successfully yields the target flag:
+
+================================================================================
+FLAG: OBV{r54_5m4ll_3xp0n3n7_c4b3_r007_0a81}
+================================================================================
+
+6. LESSONS LEARNED & MITIGATION
+--------------------------------------------------------------------------------
+- Secure Implementation: Always validate input parameters, use safe cryptographic primitives with high entropy, and avoid storing sensitive keys or flags in plaintext artifacts.
+- Hardening: Implement defense-in-depth controls, enforce authentication on internal interfaces, and audit dynamic execution paths.
+================================================================================

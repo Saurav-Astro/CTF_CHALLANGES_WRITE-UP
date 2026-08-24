@@ -1,0 +1,8 @@
+TACTICAL SITUATION:
+Enemy signal authenticators process input using variable bit-wise circular rotation and S-Box byte substitution guarded by ptrace anti-tracing.
+
+MISSION OBJECTIVES:
+- Calculate index-dependent variable rotation offsets.
+- Reverse S-Box substitution to decrypt the root passcode.
+
+FLAG FORMAT: OBV{...}

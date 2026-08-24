@@ -1,0 +1,10 @@
+===[ CUSTOM ANDROID PACKER UNPACKING ]===
+Difficulty: INSANE
+Category: Mobile
+Source: Real Google Play Services APK
+
+Unpack custom APK packer library `libunpacker.so`.
+
+File: app.apk
+
+Flag: OBV{...}

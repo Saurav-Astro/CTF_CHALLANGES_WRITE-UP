@@ -1,0 +1,9 @@
+===[ QR MATRIX RECONSTRUCTION ]===
+Difficulty: EASY
+Category: Misc
+
+ASCII QR matrix metadata.
+
+File: qr_matrix.json
+
+Flag: OBV{...}

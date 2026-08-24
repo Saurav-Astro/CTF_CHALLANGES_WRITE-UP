@@ -1,0 +1,9 @@
+===[ REGEX PUZZLE SOLVER ]===
+Difficulty: EASY
+Category: Misc
+
+Regular expression string matching.
+
+File: regex_data.json
+
+Flag: OBV{...}

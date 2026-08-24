@@ -1,0 +1,10 @@
+===[ UNENCRYPTED SHARED PREFS ]===
+Difficulty: EASY
+Category: Mobile
+Source: Real Google Chrome APK
+
+Extract plaintext auth token from Shared Preferences XML.
+
+File: app.apk
+
+Flag: OBV{...}

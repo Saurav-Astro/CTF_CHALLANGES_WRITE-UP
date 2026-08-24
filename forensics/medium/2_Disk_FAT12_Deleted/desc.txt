@@ -1,0 +1,8 @@
+TACTICAL SITUATION:
+Enemy operatives deleted mission log files from a captured 1.44MB legacy floppy disk drive before evacuating their command bunker. The deleted payload bytes were masked with XOR key `0x42`.
+
+MISSION OBJECTIVES:
+- Parse `floppy.img` FAT12 file allocation structures.
+- Locate the deleted directory marker (`0xE5`) for `FLAG.TXT`, extract cluster bytes, and unmask `0x42` XOR to obtain the flag.
+
+FLAG FORMAT: OBV{...}

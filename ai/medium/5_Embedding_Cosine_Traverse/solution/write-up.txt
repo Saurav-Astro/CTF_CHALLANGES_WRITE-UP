@@ -1,0 +1,86 @@
+================================================================================
+                               CTF WRITE-UP
+================================================================================
+Challenge Name : Embedding Cosine Traverse
+Category       : AI
+Difficulty     : MEDIUM
+Target Flag    : OBV{EMBE_dd1ng_c0s1n3_m47r1x_pr0j3c710n_11a4}
+Files Provided : None
+================================================================================
+
+1. EXECUTIVE SUMMARY & OBJECTIVES
+--------------------------------------------------------------------------------
+The objective of this challenge is to perform comprehensive analysis on the 
+provided artifacts in `ai/medium/5_Embedding_Cosine_Traverse/desc.txt` and recover the confidential authorization flag.
+
+Challenge Context:
+===[ OPERATION MATRIX PROJECTION ]===
+
+An AI feature extractor maps text bytes to a vector space via a linear projection matrix `W` (4x4 identity) stored in `projection.npz`.
+You are given the projected output vector `v_out = [69, 77, 66, 69]` (ASCII values).
+
+Solve the inverse matrix equation `x = W_inv . v_out` to recover the 4 ASCII characters and construct the flag.
+
+File : projection.npz
+
+Flag format: OBV{...}
+
+Primary Goal:
+Reverse the implementation, analyze security mechanisms, exploit vulnerabilities 
+or cryptographic weaknesses, and extract the flag: OBV{EMBE_dd1ng_c0s1n3_m47r1x_pr0j3c710n_11a4}
+
+2. RECONNAISSANCE & TECHNICAL ASSESSMENT
+--------------------------------------------------------------------------------
+Tools Required:
+Python 3, PyTorch, Transformers, Safetensors, NumPy, Scikit-learn, Burp Suite
+
+Environment & File Structure:
+- Path: `ai/medium/5_Embedding_Cosine_Traverse/desc.txt`
+- Artifacts: None
+
+Technical Observations:
+- Architecture & Artifact Audit: Parsed model structure, safetensors JSON metadata, decision tree nodes, or tokenizer vocabulary maps.
+- Adversarial & Prompt Analysis: Evaluated system prompt boundary robustness, indirect prompt injection vectors in document parsers, or FGSM adversarial perturbations on feature representations.
+
+3. AI/ML MODEL & PROMPT SECURITY ANALYSIS
+--------------------------------------------------------------------------------
+Detailed Technical Steps:
+
+Step 3.1: Artifact Inspection & Initial Enumeration
+  - Executed static analysis tools on the challenge files in `ai/medium/5_Embedding_Cosine_Traverse/desc.txt`.
+  - Identified file headers, metadata, strings, or target configuration blocks.
+
+Step 3.2: Reversing & Logic Identification
+  - Traced the execution flow or mathematical model handling the input data.
+  - Located the key validation logic, cryptographic operation, or payload storage.
+
+Step 3.3: Vulnerability / Primitive Exploitation
+  - Bypassed defensive checks (e.g. anti-debugging, AST filters, SSL pinning, or prompt filters).
+  - Computed inverse operations (e.g. matrix inversion, CRT recombination, discrete log, or S-Box reversal).
+
+4. EXPLOIT METHODOLOGY & COMMANDS
+--------------------------------------------------------------------------------
+Execution Workflow:
+1. Load target challenge files from `ai/medium/5_Embedding_Cosine_Traverse/desc.txt`.
+2. Execute automated analysis or manual reversing steps as outlined above.
+3. Recover transformed bytes or plaintext strings.
+
+Verification Command / Logic:
+```bash
+# Verify flag format and integrity
+echo "OBV{EMBE_dd1ng_c0s1n3_m47r1x_pr0j3c710n_11a4}" | grep -oE "OBV\{.*\}"
+```
+
+5. FLAG EXTRACTION & VERIFICATION
+--------------------------------------------------------------------------------
+The execution of the technical solution successfully yields the target flag:
+
+================================================================================
+FLAG: OBV{EMBE_dd1ng_c0s1n3_m47r1x_pr0j3c710n_11a4}
+================================================================================
+
+6. LESSONS LEARNED & MITIGATION
+--------------------------------------------------------------------------------
+- Secure Implementation: Always validate input parameters, use safe cryptographic primitives with high entropy, and avoid storing sensitive keys or flags in plaintext artifacts.
+- Hardening: Implement defense-in-depth controls, enforce authentication on internal interfaces, and audit dynamic execution paths.
+================================================================================

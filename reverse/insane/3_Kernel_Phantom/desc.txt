@@ -1,0 +1,8 @@
+TACTICAL SITUATION:
+Enemy command nodes migrated key validation out of userland into an embedded Linux eBPF kernel bytecode filter.
+
+MISSION OBJECTIVES:
+- Extract the raw eBPF bytecode filter from the ELF binary.
+- Reverse kernel-level SIMD vector arithmetic to retrieve the flag.
+
+FLAG FORMAT: OBV{...}

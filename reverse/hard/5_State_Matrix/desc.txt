@@ -1,0 +1,8 @@
+TACTICAL SITUATION:
+Enemy command node enforces a Substitution-Permutation Network (SPN) coupled with a Finite State Automaton (FSM) state matrix transition check.
+
+MISSION OBJECTIVES:
+- Trace the non-linear S-Box substitution and P-Box permutation state machine.
+- Invert the state matrix transitions to recover the root flag vector.
+
+FLAG FORMAT: OBV{...}

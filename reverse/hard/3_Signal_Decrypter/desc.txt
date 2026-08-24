@@ -1,0 +1,8 @@
+TACTICAL SITUATION:
+Enemy communications utilize an anti-disassembly pipeline featuring overlapping x86_64 instructions, junk byte insertions, and a 64-bit stateful stream decrypter.
+
+MISSION OBJECTIVES:
+- Fix disassembler control flow alignment past opaque predicates and junk bytes.
+- Reverse the stream decrypter state machine to recover the command passphrase.
+
+FLAG FORMAT: OBV{...}

@@ -1,0 +1,11 @@
+===[ OPERATION ONNX MULTI-LAYER REVERSE ]===
+
+An embedded AI inference engine (`onnx_engine.npz`) transforms 4-dimensional input feature vectors through a 2-layer neural network with weight matrices `W1` and `W2`:
+`v_out = (x . W1) . W2`
+
+You are given `W1` (4x4 matrix), `W2` (4x4 matrix), and the final output vector `v_out`.
+Solve the multi-layer matrix equation `x = v_out . W2_inv . W1_inv` to recover the original 4-character input string and build the flag.
+
+File : onnx_engine.npz
+
+Flag format: OBV{...}

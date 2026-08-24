@@ -1,0 +1,1 @@
+Perform forensic analysis on the covert BLACK_OPS.zip package.

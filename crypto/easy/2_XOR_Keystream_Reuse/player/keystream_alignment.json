@@ -1,0 +1,7 @@
+{
+  "stream_1": "688500bcc9b59939bde3543688331c20874810d8f34be9a09bd2ca5dacad3cc023b940696ee5",
+  "stream_2": "68971395fc96e029c493755a84066b118a6a77f8992fc2c0fbfad870d49d50ac45b1",
+  "reference_header": "OPERATIONAL_SECURITY_SYSTEM_KEY_99",
+  "decoy_key": "0x1337",
+  "decoy_ct_hex": "4f42567b66616b655f61695f747261707d"
+}

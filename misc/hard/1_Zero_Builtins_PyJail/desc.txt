@@ -1,0 +1,9 @@
+===[ ZERO BUILTINS PYJAIL ]===
+Difficulty: HARD
+Category: Misc
+
+PyJail execution with empty `__builtins__` environment.
+
+File: zero_builtins.py
+
+Flag: OBV{...}

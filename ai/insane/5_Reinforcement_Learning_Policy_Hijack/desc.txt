@@ -1,0 +1,13 @@
+===[ OPERATION VALUE ITERATION POLICY ]===
+
+A Reinforcement Learning Markov Decision Process (MDP) model (`mdp_environment.npz`) provides:
+- State Transition Matrix `P[s, a, s']` (5 states, 4 actions)
+- Reward Matrix `R[s, a]`
+- Discount factor `gamma = 0.9`
+
+Perform Value Iteration ($V(s) = \max_a \sum_{s'} P(s, a, s') [ R(s, a) + \gamma V(s') ]$) to compute the optimal policy $\pi(s) = 	ext{argmax}_a Q(s, a)$.
+The optimal action indices for states `0..3` yield the secret 4-digit PIN required to unlock the flag.
+
+File : mdp_environment.npz
+
+Flag format: OBV{...}

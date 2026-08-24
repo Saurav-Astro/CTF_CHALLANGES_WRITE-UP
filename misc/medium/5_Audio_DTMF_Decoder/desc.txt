@@ -1,0 +1,9 @@
+===[ AUDIO DTMF DECODER ]===
+Difficulty: MEDIUM
+Category: Misc
+
+Dual-tone multi-frequency phone keypad audio decoding.
+
+File: dtmf.json
+
+Flag: OBV{...}

@@ -1,0 +1,9 @@
+===[ GAME ANTICHEAT BYPASS ]===
+Difficulty: HARD
+Category: Misc
+
+Bypassing memory integrity checks in game process.
+
+File: anticheat.json
+
+Flag: OBV{...}

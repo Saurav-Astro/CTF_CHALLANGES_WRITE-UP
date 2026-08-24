@@ -1,0 +1,10 @@
+===[ SMALI BYTECODE PATCH ]===
+Difficulty: MEDIUM
+Category: Mobile
+Source: Real SHAREit APK
+
+Disassemble Smali bytecode using Apktool to bypass license check.
+
+File: app.apk
+
+Flag: OBV{...}

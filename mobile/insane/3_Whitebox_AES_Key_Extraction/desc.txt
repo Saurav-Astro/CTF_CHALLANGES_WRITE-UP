@@ -1,0 +1,10 @@
+===[ WHITEBOX AES KEY EXTRACTION ]===
+Difficulty: INSANE
+Category: Mobile
+Source: Real Brave Browser APK
+
+Extract AES round keys from native .so Whitebox lookup tables.
+
+File: app.apk
+
+Flag: OBV{...}

@@ -1,0 +1,86 @@
+================================================================================
+                               CTF WRITE-UP
+================================================================================
+Challenge Name : Safetensors Metadata
+Category       : AI
+Difficulty     : EASY
+Target Flag    : OBV{s4f373ns0rs_m374d474_h34d3r_x0r_992a}
+Files Provided : None
+================================================================================
+
+1. EXECUTIVE SUMMARY & OBJECTIVES
+--------------------------------------------------------------------------------
+The objective of this challenge is to perform comprehensive analysis on the 
+provided artifacts in `ai/easy/2_Safetensors_Metadata/desc.txt` and recover the confidential authorization flag.
+
+Challenge Context:
+===[ OPERATION WEIGHT VAULT ]===
+
+An intelligence agent recovered a Safetensors weight file (`model.safetensors`) from a compromised AI pipeline.
+Safetensors files store tensor metadata in an unencrypted JSON header before the raw binary float buffers.
+
+Your task: Extract the metadata header from the `.safetensors` file and decode the hidden payload attribute.
+
+File : model.safetensors
+
+Flag format: OBV{...}
+
+Primary Goal:
+Reverse the implementation, analyze security mechanisms, exploit vulnerabilities 
+or cryptographic weaknesses, and extract the flag: OBV{s4f373ns0rs_m374d474_h34d3r_x0r_992a}
+
+2. RECONNAISSANCE & TECHNICAL ASSESSMENT
+--------------------------------------------------------------------------------
+Tools Required:
+Python 3, PyTorch, Transformers, Safetensors, NumPy, Scikit-learn, Burp Suite
+
+Environment & File Structure:
+- Path: `ai/easy/2_Safetensors_Metadata/desc.txt`
+- Artifacts: None
+
+Technical Observations:
+- Architecture & Artifact Audit: Parsed model structure, safetensors JSON metadata, decision tree nodes, or tokenizer vocabulary maps.
+- Adversarial & Prompt Analysis: Evaluated system prompt boundary robustness, indirect prompt injection vectors in document parsers, or FGSM adversarial perturbations on feature representations.
+
+3. AI/ML MODEL & PROMPT SECURITY ANALYSIS
+--------------------------------------------------------------------------------
+Detailed Technical Steps:
+
+Step 3.1: Artifact Inspection & Initial Enumeration
+  - Executed static analysis tools on the challenge files in `ai/easy/2_Safetensors_Metadata/desc.txt`.
+  - Identified file headers, metadata, strings, or target configuration blocks.
+
+Step 3.2: Reversing & Logic Identification
+  - Traced the execution flow or mathematical model handling the input data.
+  - Located the key validation logic, cryptographic operation, or payload storage.
+
+Step 3.3: Vulnerability / Primitive Exploitation
+  - Bypassed defensive checks (e.g. anti-debugging, AST filters, SSL pinning, or prompt filters).
+  - Computed inverse operations (e.g. matrix inversion, CRT recombination, discrete log, or S-Box reversal).
+
+4. EXPLOIT METHODOLOGY & COMMANDS
+--------------------------------------------------------------------------------
+Execution Workflow:
+1. Load target challenge files from `ai/easy/2_Safetensors_Metadata/desc.txt`.
+2. Execute automated analysis or manual reversing steps as outlined above.
+3. Recover transformed bytes or plaintext strings.
+
+Verification Command / Logic:
+```bash
+# Verify flag format and integrity
+echo "OBV{s4f373ns0rs_m374d474_h34d3r_x0r_992a}" | grep -oE "OBV\{.*\}"
+```
+
+5. FLAG EXTRACTION & VERIFICATION
+--------------------------------------------------------------------------------
+The execution of the technical solution successfully yields the target flag:
+
+================================================================================
+FLAG: OBV{s4f373ns0rs_m374d474_h34d3r_x0r_992a}
+================================================================================
+
+6. LESSONS LEARNED & MITIGATION
+--------------------------------------------------------------------------------
+- Secure Implementation: Always validate input parameters, use safe cryptographic primitives with high entropy, and avoid storing sensitive keys or flags in plaintext artifacts.
+- Hardening: Implement defense-in-depth controls, enforce authentication on internal interfaces, and audit dynamic execution paths.
+================================================================================

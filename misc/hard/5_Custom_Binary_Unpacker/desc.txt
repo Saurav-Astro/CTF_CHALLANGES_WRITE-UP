@@ -1,0 +1,9 @@
+===[ CUSTOM BINARY UNPACKER ]===
+Difficulty: HARD
+Category: Misc
+
+Self-extracting unpacked stub payload extraction.
+
+File: unpacked.json
+
+Flag: OBV{...}

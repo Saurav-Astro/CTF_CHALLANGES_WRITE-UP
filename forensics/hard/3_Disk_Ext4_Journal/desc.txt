@@ -1,0 +1,8 @@
+TACTICAL SITUATION:
+Target workstation storage drives were wiped before seizure, but ext4 journal transaction logs (`JFS2`) preserved uncommitted transaction blocks containing XOR-masked key payloads.
+
+MISSION OBJECTIVES:
+- Parse `system.img` ext4 journal transaction log headers.
+- Extract the transaction block containing the XOR `0x55` masked payload to recover the flag.
+
+FLAG FORMAT: OBV{...}

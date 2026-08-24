@@ -1,0 +1,9 @@
+===[ CUSTOM FEISTEL CIPHER ]===
+Difficulty: HARD
+Category: Crypto
+
+4-round symmetric Feistel cipher structure.
+
+File: cipher.bin
+
+Flag: OBV{...}

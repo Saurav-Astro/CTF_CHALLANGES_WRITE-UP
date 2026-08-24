@@ -1,0 +1,13 @@
+===[ OPERATION FGSM ATTACK ]===
+
+An image classifier model (`classifier.npz`) uses a 16-element weight vector `W` and bias `b` to classify feature vectors into Class 0 (Normal) or Class 1 (Target Alert).
+
+You are given a normal input vector `x_base` which currently predicts Class 0.
+Perform a Fast Gradient Sign Method (FGSM) perturbation:
+`x_adv = x_base + epsilon * sign(W)` with `epsilon = 0.5`.
+
+The dot product `x_adv . W + b` will produce a positive logit. Convert the perturbed vector elements into hex bytes to recover the flag.
+
+File : classifier.npz
+
+Flag format: OBV{...}

@@ -1,0 +1,8 @@
+TACTICAL SITUATION:
+Enemy command transmissions broadcast high-frequency ultrasound bursts containing visual audio patterns.
+
+MISSION OBJECTIVES:
+- Generate FFT Spectrogram plot of `spectrogram.wav` using Audacity, Python Matplotlib, or Scipy.
+- Read the high-frequency visual text flag rendered between 15kHz and 20kHz.
+
+FLAG FORMAT: OBV{...}

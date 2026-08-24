@@ -1,0 +1,9 @@
+===[ SYMBOLIC EXECUTION Z3 ]===
+Difficulty: INSANE
+Category: Misc
+
+Solving SMT constraint logic using Z3 symbolic execution.
+
+File: z3_spec.json
+
+Flag: OBV{...}

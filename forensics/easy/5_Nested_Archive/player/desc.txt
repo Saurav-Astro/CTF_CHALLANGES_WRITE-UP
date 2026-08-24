@@ -1,0 +1,8 @@
+TACTICAL SITUATION:
+Enemy signal intelligence encrypted sensitive payload data inside a 50-level nested ZIP archive matrix guarded by hash-derived password layers.
+
+MISSION OBJECTIVES:
+- Write an automated unpacking script to iterate from `layer_50.zip` down to `layer_1.zip`.
+- Compute layer passwords using SHA-256 layer hashes (`sha256(str(N))[:8]`) to extract the root flag.
+
+FLAG FORMAT: OBV{...}

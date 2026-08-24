@@ -1,0 +1,8 @@
+TACTICAL SITUATION:
+Enemy authentication logic applies high/low nibble bit permutations and index-salted XOR masks guarded by ptrace anti-tracing.
+
+MISSION OBJECTIVES:
+- Reverse the nibble swapping routine (`((b & 0x0F) << 4) | ((b & 0xF0) >> 4)`).
+- Extract the flag passcode.
+
+FLAG FORMAT: OBV{...}

@@ -1,0 +1,8 @@
+Learning With Errors (LWE) Homomorphic Encryption samples subject to Gaussian noise leakage.
+
+MISSION OBJECTIVES:
+1. Load LWE parameters $q, n$, sample pairs $(a_i, b_i)$, and ciphertext from `ring_lwe_samples.json`.
+2. Construct the dual lattice representation or noise filter to isolate zero-noise samples.
+3. Recover the binary secret polynomial $s(x)$ and decrypt the flag.
+
+FLAG FORMAT: OBV{...}

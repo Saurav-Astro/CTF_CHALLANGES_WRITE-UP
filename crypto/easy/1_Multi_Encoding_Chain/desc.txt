@@ -1,0 +1,9 @@
+===[ MULTI ENCODING CHAIN ]===
+Difficulty: EASY
+Category: Crypto
+
+Decode the hex-encoded base64 XOR string.
+
+File: cipher.txt
+
+Flag: OBV{...}

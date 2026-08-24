@@ -1,0 +1,9 @@
+===[ OBFUSCATED JS VM INTERPRETER ]===
+Difficulty: INSANE
+Category: Misc
+
+De-obfuscating JS Virtual Machine execution AST.
+
+File: js_vm.json
+
+Flag: OBV{...}

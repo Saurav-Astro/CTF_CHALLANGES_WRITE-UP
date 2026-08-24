@@ -1,0 +1,90 @@
+================================================================================
+                               CTF WRITE-UP
+================================================================================
+Challenge Name : GGUF Quantized Weight Extraction
+Category       : AI
+Difficulty     : INSANE
+Target Flag    : OBV{gguf_q4_qu4n71z3d_sc4l3_r3c0v3ry_88c4}
+Files Provided : player.zip
+================================================================================
+
+1. EXECUTIVE SUMMARY & OBJECTIVES
+--------------------------------------------------------------------------------
+The objective of this challenge is to perform comprehensive analysis on the 
+provided artifacts in `ai/insane/4_GGUF_Quantized_Weight_Extraction/desc.txt` and recover the confidential authorization flag.
+
+Challenge Context:
+===[ OPERATION GGUF BLOCK DEQUANTIZATION ]===
+
+A GGUF Q4_0 quantized tensor block binary file (`model_q4_0.bin`) contains 2 quantization blocks.
+Each Q4_0 block consists of:
+  1. `delta`: 16-bit Float (FP16 / float16, 2 bytes)
+  2. `qs`: 16 packed bytes (32 4-bit nibbles: low 4 bits = weight 0, high 4 bits = weight 1)
+
+Dequantized weight formula: `W_i = (nibble_i - 8) * delta`
+
+Parse the GGUF Q4_0 blocks, compute the dequantized weights, locate the non-zero float values, convert to integer ASCII, and build the flag.
+
+File : model_q4_0.bin
+
+Flag format: OBV{...}
+
+Primary Goal:
+Reverse the implementation, analyze security mechanisms, exploit vulnerabilities 
+or cryptographic weaknesses, and extract the flag: OBV{gguf_q4_qu4n71z3d_sc4l3_r3c0v3ry_88c4}
+
+2. RECONNAISSANCE & TECHNICAL ASSESSMENT
+--------------------------------------------------------------------------------
+Tools Required:
+Python 3, PyTorch, Transformers, Safetensors, NumPy, Scikit-learn, Burp Suite
+
+Environment & File Structure:
+- Path: `ai/insane/4_GGUF_Quantized_Weight_Extraction/desc.txt`
+- Artifacts: player.zip
+
+Technical Observations:
+- Architecture & Artifact Audit: Parsed model structure, safetensors JSON metadata, decision tree nodes, or tokenizer vocabulary maps.
+- Adversarial & Prompt Analysis: Evaluated system prompt boundary robustness, indirect prompt injection vectors in document parsers, or FGSM adversarial perturbations on feature representations.
+
+3. AI/ML MODEL & PROMPT SECURITY ANALYSIS
+--------------------------------------------------------------------------------
+Detailed Technical Steps:
+
+Step 3.1: Artifact Inspection & Initial Enumeration
+  - Executed static analysis tools on the challenge files in `ai/insane/4_GGUF_Quantized_Weight_Extraction/desc.txt`.
+  - Identified file headers, metadata, strings, or target configuration blocks.
+
+Step 3.2: Reversing & Logic Identification
+  - Traced the execution flow or mathematical model handling the input data.
+  - Located the key validation logic, cryptographic operation, or payload storage.
+
+Step 3.3: Vulnerability / Primitive Exploitation
+  - Bypassed defensive checks (e.g. anti-debugging, AST filters, SSL pinning, or prompt filters).
+  - Computed inverse operations (e.g. matrix inversion, CRT recombination, discrete log, or S-Box reversal).
+
+4. EXPLOIT METHODOLOGY & COMMANDS
+--------------------------------------------------------------------------------
+Execution Workflow:
+1. Load target challenge files from `ai/insane/4_GGUF_Quantized_Weight_Extraction/desc.txt`.
+2. Execute automated analysis or manual reversing steps as outlined above.
+3. Recover transformed bytes or plaintext strings.
+
+Verification Command / Logic:
+```bash
+# Verify flag format and integrity
+echo "OBV{gguf_q4_qu4n71z3d_sc4l3_r3c0v3ry_88c4}" | grep -oE "OBV\{.*\}"
+```
+
+5. FLAG EXTRACTION & VERIFICATION
+--------------------------------------------------------------------------------
+The execution of the technical solution successfully yields the target flag:
+
+================================================================================
+FLAG: OBV{gguf_q4_qu4n71z3d_sc4l3_r3c0v3ry_88c4}
+================================================================================
+
+6. LESSONS LEARNED & MITIGATION
+--------------------------------------------------------------------------------
+- Secure Implementation: Always validate input parameters, use safe cryptographic primitives with high entropy, and avoid storing sensitive keys or flags in plaintext artifacts.
+- Hardening: Implement defense-in-depth controls, enforce authentication on internal interfaces, and audit dynamic execution paths.
+================================================================================

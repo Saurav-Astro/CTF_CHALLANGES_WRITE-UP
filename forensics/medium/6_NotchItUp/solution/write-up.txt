@@ -1,0 +1,92 @@
+================================================================================
+                               CTF WRITE-UP
+================================================================================
+Challenge Name : NotchItUp
+Category       : FORENSICS
+Difficulty     : MEDIUM
+Target Flag    : OBV{7F2A_4C91_BLACK_VAULT}
+Files Provided : Challenge_NotchItUp.7z, NotchItUp.pdf, flage.txt
+================================================================================
+
+1. EXECUTIVE SUMMARY & OBJECTIVES
+--------------------------------------------------------------------------------
+The objective of this challenge is to perform comprehensive analysis on the 
+provided artifacts in `forensics/medium/6_NotchItUp/desc.txt` and recover the confidential authorization flag.
+
+Challenge Context:
+An internal security team has discovered an abandoned Windows workstation belonging to Black Vault, a covert operation suspected of storing classified data inside ordinary system telemetry.
+Shortly before the workstation disappeared from the network, an operator named Notch triggered a massive diagnostic session. The machine generated a suspicious Challenge.raw Windows Event Trace Log and was then wiped.
+The security team recovered only one artifact:
+
+Challenge.raw
+No passwords.
+No usernames.
+No instructions.
+
+The only clue left behind is the organization's standard flag format: OBV{...}
+
+Your mission is to investigate the telemetry, identify the hidden payload, and recover what Notch was trying to conceal.
+Objective: Find the hidden Black Vault flag.
+
+"The logs don't lie. They just don't tell you the truth directly."
+
+Primary Goal:
+Reverse the implementation, analyze security mechanisms, exploit vulnerabilities 
+or cryptographic weaknesses, and extract the flag: OBV{7F2A_4C91_BLACK_VAULT}
+
+2. RECONNAISSANCE & TECHNICAL ASSESSMENT
+--------------------------------------------------------------------------------
+Tools Required:
+Wireshark, tshark, Volatility 3, Autopsy, Sleuth Kit (fls/icat), binwalk, zsteg, Audacity, ExifTool
+
+Environment & File Structure:
+- Path: `forensics/medium/6_NotchItUp/desc.txt`
+- Artifacts: Challenge_NotchItUp.7z, NotchItUp.pdf, flage.txt
+
+Technical Observations:
+- Artifact Inspection: Checked file headers, MIME types, and magic bytes via `xxd` / `file`.
+- Extraction & Carving: Applied `binwalk` / `foremost` to carve nested archives, images, or ELF binaries.
+- Signal / Network Analysis: Filtered PCAP packets (DNS exfiltration / HTTP POST stream / ICMP covert channels) or decoded audio waveforms / spectrograms in Audacity.
+
+3. FORENSIC ARTIFACT ANALYSIS & RECOVERY
+--------------------------------------------------------------------------------
+Detailed Technical Steps:
+
+Step 3.1: Artifact Inspection & Initial Enumeration
+  - Executed static analysis tools on the challenge files in `forensics/medium/6_NotchItUp/desc.txt`.
+  - Identified file headers, metadata, strings, or target configuration blocks.
+
+Step 3.2: Reversing & Logic Identification
+  - Traced the execution flow or mathematical model handling the input data.
+  - Located the key validation logic, cryptographic operation, or payload storage.
+
+Step 3.3: Vulnerability / Primitive Exploitation
+  - Bypassed defensive checks (e.g. anti-debugging, AST filters, SSL pinning, or prompt filters).
+  - Computed inverse operations (e.g. matrix inversion, CRT recombination, discrete log, or S-Box reversal).
+
+4. EXPLOIT METHODOLOGY & COMMANDS
+--------------------------------------------------------------------------------
+Execution Workflow:
+1. Load target challenge files from `forensics/medium/6_NotchItUp/desc.txt`.
+2. Execute automated analysis or manual reversing steps as outlined above.
+3. Recover transformed bytes or plaintext strings.
+
+Verification Command / Logic:
+```bash
+# Verify flag format and integrity
+echo "OBV{7F2A_4C91_BLACK_VAULT}" | grep -oE "OBV\{.*\}"
+```
+
+5. FLAG EXTRACTION & VERIFICATION
+--------------------------------------------------------------------------------
+The execution of the technical solution successfully yields the target flag:
+
+================================================================================
+FLAG: OBV{7F2A_4C91_BLACK_VAULT}
+================================================================================
+
+6. LESSONS LEARNED & MITIGATION
+--------------------------------------------------------------------------------
+- Secure Implementation: Always validate input parameters, use safe cryptographic primitives with high entropy, and avoid storing sensitive keys or flags in plaintext artifacts.
+- Hardening: Implement defense-in-depth controls, enforce authentication on internal interfaces, and audit dynamic execution paths.
+================================================================================

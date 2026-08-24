@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  ai_easy_prompt_injection:
+    build: ./easy/1_Cybernetic_Sentinel/player
+    ports:
+      - "5001:5001"
+    environment:
+      - CHALLENGE_FLAG=OBV{p0mp7_1nj3c710n_j41lbr34k_b451c_8f21}
+    restart: always
+
+  ai_medium_indirect_injection:
+    build: ./medium/1_Indirect_Prompt_Injection/player
+    ports:
+      - "5002:5002"
+    environment:
+      - CHALLENGE_FLAG=OBV{1nd1r3c7_pr0mp7_1nj3c710n_d0cum3n7_m3d_7a21}
+    restart: always
+
+  ai_hard_tool_agent:
+    build: ./hard/1_Tool_Calling_Agent_Hijack/player
+    ports:
+      - "5003:5003"
+    environment:
+      - CHALLENGE_FLAG=OBV{700l_c4ll1ng_4g3n7_h1j4ck_f1l3_r34d_88a1}
+    restart: always
+
+  ai_insane_swarm:
+    build: ./insane/2_Multi_Agent_Swarm_Exploit/player
+    ports:
+      - "5004:5004"
+    environment:
+      - CHALLENGE_FLAG=OBV{mult1_4g3n7_5w4rm_p4yl04d_c45c4d3_3311}
+    restart: always
