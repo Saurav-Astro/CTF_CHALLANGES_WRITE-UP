@@ -1,86 +1,152 @@
 ================================================================================
                                CTF WRITE-UP
 ================================================================================
+
 Challenge Name : Single Byte XOR
 Category       : CRYPTO
 Difficulty     : EASY
 Target Flag    : OBV{s1ngl3_by73_x0r_k3y_r3c0v3ry_7711}
 Files Provided : player.zip
+
+================================================================================
+1. EXECUTIVE SUMMARY
 ================================================================================
 
-1. EXECUTIVE SUMMARY & OBJECTIVES
---------------------------------------------------------------------------------
-The objective of this challenge is to perform comprehensive analysis on the 
-provided artifacts in `crypto/easy/2_Single_Byte_XOR/desc.txt` and recover the confidential authorization flag.
+The challenge implements a simple XOR cipher where the entire plaintext is
+encrypted using a single-byte key.
 
-Challenge Context:
-===[ SINGLE BYTE XOR ]===
-Difficulty: EASY
-Category: Crypto
+The provided ciphertext is:
 
-A secret message was XORed with a single byte key.
+    15180c21296b343d36690538236d6905226a2805316923052869396a2c692823056d6d6b6b27
 
-File: cipher.hex
+The objective is to recover the single-byte XOR key and use it to decrypt the
+ciphertext and obtain the flag.
 
-Flag: OBV{...}
+Since a single byte is used as the key, there are only 256 possible keys,
+making the cipher trivial to brute-force.
 
-Primary Goal:
-Reverse the implementation, analyze security mechanisms, exploit vulnerabilities 
-or cryptographic weaknesses, and extract the flag: OBV{s1ngl3_by73_x0r_k3y_r3c0v3ry_7711}
+================================================================================
+2. CIPHERTEXT ANALYSIS
+================================================================================
 
-2. RECONNAISSANCE & TECHNICAL ASSESSMENT
---------------------------------------------------------------------------------
-Tools Required:
-Python 3, SageMath, PyCryptodome, z3-solver, fpylll, Hashcat
+The ciphertext is provided in hexadecimal format. The first step is to
+convert it into raw bytes:
 
-Environment & File Structure:
-- Path: `crypto/easy/2_Single_Byte_XOR/desc.txt`
-- Artifacts: player.zip
+    cipher = bytes.fromhex(
+        "15180c21296b343d36690538236d6905226a2805316923052869396a2c692823056d6d6b6b27"
+    )
 
-Technical Observations:
-- Cryptographic Primitive Analysis: Inspected mathematical structure (RSA, AES-CBC/ECB, ECC, LFSR, LWE, LCG).
-- Parameter Extraction: Extracted modulus N, public exponent e, IV, ciphertexts, generator g, or lattice parameters from challenge artifacts.
-- Vulnerability Assessment: Identified mathematical weaknesses such as small exponent e, common modulus, unpadded CBC bit-flipping, smooth order groups (Pohlig-Hellman), or short basis vectors (LLL reduction).
+The challenge specifies that the plaintext was XORed with a single byte:
 
-3. CRYPTANALYSIS & MATHEMATICAL MODELING
---------------------------------------------------------------------------------
-Detailed Technical Steps:
+    C[i] = P[i] XOR K
 
-Step 3.1: Artifact Inspection & Initial Enumeration
-  - Executed static analysis tools on the challenge files in `crypto/easy/2_Single_Byte_XOR/desc.txt`.
-  - Identified file headers, metadata, strings, or target configuration blocks.
+where:
 
-Step 3.2: Reversing & Logic Identification
-  - Traced the execution flow or mathematical model handling the input data.
-  - Located the key validation logic, cryptographic operation, or payload storage.
+    C[i] = ciphertext byte
+    P[i] = plaintext byte
+    K    = single-byte XOR key
 
-Step 3.3: Vulnerability / Primitive Exploitation
-  - Bypassed defensive checks (e.g. anti-debugging, AST filters, SSL pinning, or prompt filters).
-  - Computed inverse operations (e.g. matrix inversion, CRT recombination, discrete log, or S-Box reversal).
+Since XOR is its own inverse:
 
-4. EXPLOIT METHODOLOGY & COMMANDS
---------------------------------------------------------------------------------
-Execution Workflow:
-1. Load target challenge files from `crypto/easy/2_Single_Byte_XOR/desc.txt`.
-2. Execute automated analysis or manual reversing steps as outlined above.
-3. Recover transformed bytes or plaintext strings.
+    P[i] = C[i] XOR K
 
-Verification Command / Logic:
-```bash
-# Verify flag format and integrity
-echo "OBV{s1ngl3_by73_x0r_k3y_r3c0v3ry_7711}" | grep -oE "OBV\{.*\}"
-```
+================================================================================
+3. KEY RECOVERY
+================================================================================
 
+A single-byte XOR key can be brute-forced by testing all 256 possible values.
+
+A useful observation is that the expected plaintext begins with:
+
+    OBV{
+
+The first ciphertext bytes are:
+
+    15 18 0c 21
+
+Assuming the first plaintext bytes are:
+
+    4f 42 56 7b
+
+the XOR key can be recovered as:
+
+    0x15 XOR 0x4f = 0x5a
+    0x18 XOR 0x42 = 0x5a
+    0x0c XOR 0x56 = 0x5a
+    0x21 XOR 0x7b = 0x5a
+
+Therefore, the recovered key is:
+
+    0x5A
+
+This confirms the same key across multiple known plaintext bytes.
+
+================================================================================
+4. DECRYPTION
+================================================================================
+
+Using the recovered key:
+
+    KEY = 0x5A
+
+each ciphertext byte is XORed with `0x5A`:
+
+    plaintext[i] = ciphertext[i] XOR 0x5A
+
+The complete decryption can be performed using:
+
+    cipher = bytes.fromhex(
+        "15180c21296b343d36690538236d6905226a2805316923052869396a2c692823056d6d6b6b27"
+    )
+
+    key = 0x5A
+
+    plaintext = bytes(b ^ key for b in cipher)
+
+    print(plaintext.decode())
+
+The output is:
+
+    OBV{s1ngl3_by73_x0r_k3y_r3c0v3ry_7711}
+
+================================================================================
 5. FLAG EXTRACTION & VERIFICATION
---------------------------------------------------------------------------------
-The execution of the technical solution successfully yields the target flag:
-
-================================================================================
-FLAG: OBV{s1ngl3_by73_x0r_k3y_r3c0v3ry_7711}
 ================================================================================
 
-6. LESSONS LEARNED & MITIGATION
---------------------------------------------------------------------------------
-- Secure Implementation: Always validate input parameters, use safe cryptographic primitives with high entropy, and avoid storing sensitive keys or flags in plaintext artifacts.
-- Hardening: Implement defense-in-depth controls, enforce authentication on internal interfaces, and audit dynamic execution paths.
+The recovered plaintext matches the expected flag format:
+
+    OBV{...}
+
+Recovered flag:
+
+    OBV{s1ngl3_by73_x0r_k3y_r3c0v3ry_7711}
+
+The key can also be independently verified from the first four bytes:
+
+    15 XOR 4F = 5A
+    18 XOR 42 = 5A
+    0C XOR 56 = 5A
+    21 XOR 7B = 5A
+
+This confirms that `0x5A` is the correct single-byte XOR key.
+
+================================================================================
+6. LESSONS LEARNED
+================================================================================
+
+- Single-byte XOR provides extremely weak encryption.
+- A one-byte key has only 256 possible values and can be brute-forced easily.
+- Known plaintext, such as a predictable flag prefix, can immediately reveal
+  the XOR key.
+- XOR encryption should not be used as a standalone cryptographic mechanism
+  for protecting sensitive information.
+- Modern authenticated encryption algorithms should be used instead of custom
+  XOR-based encryption.
+
+================================================================================
+                                FINAL FLAG
+================================================================================
+
+OBV{s1ngl3_by73_x0r_k3y_r3c0v3ry_7711}
+
 ================================================================================
